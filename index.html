@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EvoAU | Electric Vehicle Optimization @ Auburn University</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+    </style>
+  </head>
+
+  <body class="font-sans text-gray-800 bg-white">
+    <!-- NAVBAR -->
+    <header class="w-full bg-white/95 backdrop-blur shadow-sm fixed top-0 left-0 z-50">
+      <div class="max-w-7xl mx-auto flex items-center justify-between px-6 py-3">
+        <!-- Logo -->
+        <div class="flex items-center space-x-3">
+          <a href="index.html" class="flex items-center space-x-2">
+            <img src="logo.png" alt="EvoAU Logo" class="h-10 w-auto" />
+            <div>
+              <h1 class="text-lg font-semibold text-[#0D2145] leading-none">EvoAU</h1>
+              <p class="text-xs text-gray-500 leading-none">
+                Electric Vehicle Optimization @ Auburn University
+              </p>
+            </div>
+          </a>
+        </div>
+
+        <!-- Navigation -->
+        <nav class="hidden md:flex space-x-6 text-sm font-medium">
+          <a href="personnel.html" class="hover:text-[#E87700] transition">Personnel</a>
+          <a href="news.html" class="hover:text-[#E87700] transition">News</a>
+          <a href="research.html" class="hover:text-[#E87700] transition">Research</a>
+          <a href="index.html#contact" class="hover:text-[#E87700] transition">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- HERO -->
+    <section id="top" class="relative mt-16">
+      <div class="relative w-full h-[70vh] overflow-hidden">
+        <img
+          src="banner.png"
+          class="absolute inset-0 w-full h-full object-cover"
+          alt="EvoAU Banner"
+        />
+        <!-- Overlay -->
+        <div class="absolute inset-0 bg-[#0D2145]/60"></div>
+
+        <!-- Text overlay -->
+        <div
+          class="absolute inset-0 flex flex-col justify-center items-center text-center text-white px-6"
+        >
+          <h2 class="text-3xl md:text-4xl font-bold uppercase tracking-wide">
+            Electric Vehicle Optimization
+          </h2>
+          <p class="mt-4 max-w-2xl text-base md:text-lg leading-relaxed text-gray-200">
+            Advancing electric vehicle systems through AI, CFD modeling, and
+            experimental validation to enhance performance, efficiency, and
+            sustainability.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="max-w-6xl mx-auto px-6 py-16">
+      <h2 class="text-2xl font-bold text-[#E87700] mb-6">// WHAT IS EVOAU?</h2>
+      <p class="text-gray-700 leading-relaxed text-justify">
+        EvoAU (Electric Vehicle Optimization @ Auburn University) is a
+        multidisciplinary research initiative focused on advancing electric
+        vehicle technologies through a systems-level approach. The project
+        integrates computational fluid dynamics (CFD), phase change materials,
+        AI-driven optimization, and experimental hardware validation. Our goal is
+        to revolutionize the efficiency, safety, and sustainability of EV battery
+        and energy systems through intelligent simulation and real-world testing.
+      </p>
+
+      <div class="mt-8 rounded-xl overflow-hidden shadow-lg border border-gray-200">
+        <img
+          src="team.jpg"
+          class="w-full object-cover"
+          alt="EvoAU Team"
+        />
+      </div>
+    </section>
+
+    <!-- MISSION -->
+    <section id="mission" class="max-w-6xl mx-auto px-6 py-16 border-t border-gray-200">
+    <h2 class="text-2xl font-bold text-[#E87700] mb-6">// OUR MISSION</h2>
+    <p class="text-gray-700 leading-relaxed mb-8 text-justify">
+        Our mission is to accelerate the development of advanced electric vehicle
+        systems by transforming how energy management and battery thermal systems
+        are modeled, tested, and optimized. EvoAU leverages advanced CFD
+        simulation, AI-based anomaly detection, and reinforcement learning to
+        create adaptive, intelligent energy management frameworks for real-world
+        EV applications.
+    </p>
+
+    <div class="rounded-xl overflow-hidden shadow-lg border border-gray-200">
+        <iframe
+        src="challenge.pdf"
+        class="w-full h-96"
+        style="height: 80vh; min-height: 600px; border:none;"
+        ></iframe>
+    </div>
+    </section>
+
+
+    <!-- RESEARCH AREAS -->
+    <section id="research" class="bg-gray-50 py-16 border-t border-gray-200">
+      <div class="max-w-6xl mx-auto px-6">
+        <h2 class="text-2xl font-bold text-[#E87700] mb-10 text-center">
+          // RESEARCH AREAS
+        </h2>
+
+        <div class="grid md:grid-cols-3 gap-8">
+          <div class="bg-white p-8 rounded-xl shadow-sm border border-gray-100">
+            <h3 class="font-bold text-lg text-[#0D2145] mb-3">
+              CFD & Thermal Systems
+            </h3>
+            <ul class="list-disc list-inside text-gray-700 space-y-2 text-sm">
+              <li>Phase Change Material modeling</li>
+              <li>Ansys Fluent simulations</li>
+              <li>BTMS configuration testing</li>
+              <li>Thermal characterization</li>
+            </ul>
+          </div>
+
+          <div class="bg-white p-8 rounded-xl shadow-sm border border-gray-100">
+            <h3 class="font-bold text-lg text-[#0D2145] mb-3">
+              Hardware & Experimentation
+            </h3>
+            <ul class="list-disc list-inside text-gray-700 space-y-2 text-sm">
+              <li>Temperature sensing & data acquisition</li>
+              <li>Battery setup & validation rigs</li>
+              <li>Experimental BTMS verification</li>
+            </ul>
+          </div>
+
+          <div class="bg-white p-8 rounded-xl shadow-sm border border-gray-100">
+            <h3 class="font-bold text-lg text-[#0D2145] mb-3">AI & Optimization</h3>
+            <ul class="list-disc list-inside text-gray-700 space-y-2 text-sm">
+              <li>Machine learning pipelines</li>
+              <li>Anomaly detection</li>
+              <li>Reinforcement learning control</li>
+              <li>Fault prediction systems</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="max-w-6xl mx-auto px-6 py-20 text-center">
+      <h2 class="text-2xl font-bold text-[#E87700] mb-6">// CONTACT US</h2>
+      <p class="text-gray-700 mb-8 max-w-2xl mx-auto leading-relaxed">
+        Interested in collaborating, sponsoring, or joining EvoAU? We welcome
+        students, faculty, and industry partners to work with us toward a cleaner,
+        smarter electric future.
+      </p>
+
+      <a
+        href="mailto:evoau@auburn.edu"
+        class="inline-block bg-[#0D2145] text-white px-8 py-3 rounded-md font-semibold hover:bg-[#E87700] transition"
+      >
+        Email Us
+      </a>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-gray-100 border-t border-gray-200 py-6 text-center text-sm text-gray-500">
+      © 2025 EvoAU — Electric Vehicle Optimization @ Auburn University
+    </footer>
+  </body>
+</html>

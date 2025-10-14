@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EvoAU Personnel</title>
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans">
+
+<!-- Navigation Bar -->
+<nav class="bg-[#1A2B5C] text-white">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+        <!-- Logo -->
+        <a href="index.html" class="flex items-center space-x-2">
+            <img src="logo.png" alt="EvoAU Logo" class="h-10 w-auto" />
+            <div>
+                <h1 class="text-xl font-bold leading-none">EvoAU</h1>
+                <p class="text-xs text-gray-200 leading-none">Electric Vehicle Optimization @ Auburn University</p>
+            </div>
+        </a>
+
+        <!-- Nav Links -->
+        <div class="space-x-6">
+            <a href="index.html" class="hover:underline">Home</a>
+            <a href="personnel.html" class="hover:underline">Personnel</a>
+            <a href="news.html" class="hover:underline font-semibold">News</a>
+            <a href="research.html" class="hover:underline">Research</a>
+        </div>
+    </div>
+</nav>
+
+
+<!-- Hero Section -->
+<header class="bg-[#1A2B5C] text-white py-16">
+  <div class="max-w-5xl mx-auto px-6 text-center">
+    <h1 class="text-4xl md:text-5xl font-bold mb-4">Meet the Team</h1>
+    <p class="text-lg md:text-xl">Faculty, students, and researchers driving EvoAU forward</p>
+  </div>
+</header>
+
+<!-- Personnel Section -->
+<main class="max-w-7xl mx-auto px-6 py-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8" id="teamContainer">
+  <!-- Cards will be populated here dynamically -->
+</main>
+
+<!-- Load Team Data -->
+<script src="team-data.js"></script>
+<script>
+  // Wait until teamData is loaded
+  document.addEventListener("DOMContentLoaded", () => {
+    const container = document.getElementById("teamContainer");
+
+    teamData.forEach(member => {
+      const card = document.createElement("article");
+      card.className = "bg-white shadow-md rounded-lg overflow-hidden hover:shadow-xl transition-shadow flex flex-col items-center";
+
+      card.innerHTML = `
+        <img src="${member.photo}" alt="${member.name}" class="w-full h-80 sm:h-64 md:h-72 lg:h-80 object-cover rounded-t-lg">
+        <div class="p-6 text-center">
+          <h2 class="text-xl font-bold text-[#D46A1F] mb-1">${member.name}</h2>
+          <p class="text-gray-700 mb-1">${member.role}</p>
+          <p class="text-gray-500 text-sm mb-2">${member.university}</p>
+          <div class="flex justify-center gap-3 mt-2">
+            ${member.email ? `<a href="mailto:${member.email}" class="text-blue-600 hover:underline text-sm">Email</a>` : ''}
+            ${member.phone ? `<a href="tel:${member.phone}" class="text-blue-600 hover:underline text-sm">Call</a>` : ''}
+            ${member.website ? `<a href="${member.website}" target="_blank" class="text-blue-600 hover:underline text-sm">Website</a>` : ''}
+          </div>
+        </div>
+      `;
+
+      container.appendChild(card);
+    });
+  });
+</script>
+</body>
+</html>
