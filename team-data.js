@@ -41,8 +41,8 @@ const teamData = [
     university: "Auburn University, Engineering",
     photo: "https://eng.auburn.edu/images/image-not-available.jpg",
     email: "bzt0035@auburn.edu",
-    phone: "1234567890",
-    website: "https://nepcm.eng.auburn.edu/news.php"
+    phone: "",
+    website: "https://www.linkedin.com/in/benjamin-tzou/"
   },
   {
     name: "Daniel Vallejo",
@@ -50,8 +50,8 @@ const teamData = [
     university: "Auburn University, Engineering",
     photo: "https://eng.auburn.edu/images/image-not-available.jpg",
     email: "dzv0027@auburn.edu",
-    phone: "1234567890",
-    website: "https://nepcm.eng.auburn.edu/news.php"
+    phone: "",
+    website: ""
   },
     {
     name: "George Crocket",
@@ -59,8 +59,8 @@ const teamData = [
     university: "Auburn University, Engineering",
     photo: "https://eng.auburn.edu/images/image-not-available.jpg",
     email: "gic0006@auburn.edu",
-    phone: "1234567890",
-    website: "https://nepcm.eng.auburn.edu/news.php"
+    phone: "",
+    website: "https://www.linkedin.com/in/george-crockatt/"
   },
     {
     name: "Alexandra Warhurst ",
@@ -68,8 +68,8 @@ const teamData = [
     university: "Auburn University, Engineering",
     photo: "https://eng.auburn.edu/images/image-not-available.jpg",
     email: "anw0081@auburn.edu",
-    phone: "1234567890",
-    website: "https://nepcm.eng.auburn.edu/news.php"
+    phone: "",
+    website: "https://www.linkedin.com/in/alexandra-warhurst-094980232/"
   },
     {
     name: "Yu Chien Tang",
@@ -77,8 +77,8 @@ const teamData = [
     university: "Auburn University, Engineering",
     photo: "https://eng.auburn.edu/images/image-not-available.jpg",
     email: "yzt0061@auburn.edu",
-    phone: "1234567890",
-    website: "https://nepcm.eng.auburn.edu/news.php"
+    phone: "",
+    website: "https://www.linkedin.com/in/yu-chien-tang-90652b299/"
   },
     {
     name: "Alyssa Ezell",
@@ -86,8 +86,8 @@ const teamData = [
     university: "Auburn University, Engineering",
     photo: "https://eng.auburn.edu/images/image-not-available.jpg",
     email: "ale0060@auburn.edu",
-    phone: "1234567890",
-    website: "https://nepcm.eng.auburn.edu/news.php"
+    phone: "",
+    website: "https://www.linkedin.com/in/alyssa-ezell-12b68b27a/"
   },
     {
     name: "Nikith Kandula",
@@ -95,8 +95,8 @@ const teamData = [
     university: "Auburn University, Engineering",
     photo: "https://eng.auburn.edu/images/image-not-available.jpg",
     email: "nzk0064@auburn.edu",
-    phone: "1234567890",
-    website: "https://nepcm.eng.auburn.edu/news.php"
+    phone: "",
+    website: "https://www.linkedin.com/in/nik-kandula/"
   },
     {
     name: "Sai Korrapati",
@@ -104,8 +104,8 @@ const teamData = [
     university: "Auburn University, Engineering",
     photo: "https://eng.auburn.edu/images/image-not-available.jpg",
     email: "skk0026@auburn.edu",
-    phone: "1234567890",
-    website: "https://nepcm.eng.auburn.edu/news.php"
+    phone: "",
+    website: "https://www.linkedin.com/in/sai-korrapati/"
   },
     {
     name: "Yusuf Arik",
@@ -113,8 +113,8 @@ const teamData = [
     university: "Auburn University, Engineering",
     photo: "https://eng.auburn.edu/images/image-not-available.jpg",
     email: "yea0001@auburn.edu",
-    phone: "1234567890",
-    website: "https://nepcm.eng.auburn.edu/news.php"
+    phone: "",
+    website: "https://www.linkedin.com/in/yusuf-arik-04a946214/"
   },
     {
     name: "Josh Rice",
@@ -122,7 +122,7 @@ const teamData = [
     university: "Auburn University, Engineering",
     photo: "https://eng.auburn.edu/images/image-not-available.jpg",
     email: "jar0175@auburn.edu",
-    phone: "1234567890",
-    website: "https://nepcm.eng.auburn.edu/news.php"
+    phone: "",
+    website: "https://www.linkedin.com/in/joshua-rice-102502370/"
   },
 ];
