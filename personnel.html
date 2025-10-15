@@ -1,56 +1,69 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>EvoAU Personnel</title>
-<script src="https://cdn.tailwindcss.com"></script>
-<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
-<style>
-/* Gradient animation for hero */
-@keyframes gradientMove {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-.animated-overlay {
-  background: linear-gradient(270deg, rgba(13, 33, 69, 0.7), rgba(232, 119, 0, 0.6));
-  background-size: 400% 400%;
-  animation: gradientMove 12s ease infinite;
-}
-.fade-in { opacity: 0; transform: translateY(20px); transition: all 0.8s ease; }
-.fade-in.visible { opacity: 1; transform: translateY(0); }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EvoAU Personnel</title>
+  
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+    }
+  </script>
+  
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+  <style>
+    /* Gradient animation for hero */
+    @keyframes gradientMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    .animated-overlay {
+      background: linear-gradient(270deg, rgba(13,33,69,0.8), rgba(232,119,0,0.6));
+      background-size: 400% 400%;
+      animation: gradientMove 12s ease infinite;
+    }
+    .fade-in { opacity: 0; transform: translateY(20px); transition: all 0.8s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+  </style>
 </head>
-<body class="font-sans text-gray-800 bg-white dark:bg-[#0D2145] dark:text-gray-100">
+<body class="font-sans text-gray-800 bg-white dark:bg-[#0D2145] dark:text-gray-100 transition-colors duration-500">
 
 <!-- NAVBAR -->
 <header class="w-full backdrop-blur-md bg-white/70 dark:bg-[#0D2145]/70 shadow-sm fixed top-0 left-0 z-50 border-b border-white/40">
   <div class="max-w-7xl mx-auto flex items-center justify-between px-6 py-3">
-    <div class="flex items-center space-x-3">
-      <a href="index.html" class="flex items-center space-x-2">
-        <img src="logo.png" alt="EvoAU Logo" class="h-10 w-auto" />
-        <div>
-          <h1 class="text-lg font-semibold text-[#0D2145] dark:text-white leading-none">EvoAU</h1>
-          <p class="text-xs text-gray-500 dark:text-gray-300 leading-none">Electric Vehicle Optimization @ Auburn University</p>
-        </div>
-      </a>
-    </div>
+    <a href="index.html" class="flex items-center space-x-2">
+      <img src="logo.png" alt="EvoAU Logo" class="h-10 w-auto" />
+      <div>
+        <h1 class="text-lg font-semibold text-[#0D2145] dark:text-white leading-none">EvoAU</h1>
+        <p class="text-xs text-gray-500 dark:text-gray-300 leading-none">
+          Electric Vehicle Optimization @ Auburn University
+        </p>
+      </div>
+    </a>
+
     <nav class="hidden md:flex space-x-6 text-sm font-medium">
+      <a href="index.html" class="hover:text-[#E87700] transition">Home</a>
       <a href="personnel.html" class="text-[#E87700] font-semibold">Personnel</a>
       <a href="news.html" class="hover:text-[#E87700] transition">News</a>
       <a href="research.html" class="hover:text-[#E87700] transition">Research</a>
       <a href="contact.html" class="hover:text-[#E87700] transition">Contact</a>
     </nav>
+
     <div class="flex items-center space-x-4">
-      <button id="theme-toggle" class="p-2 rounded-full bg-gray-200 dark:bg-gray-700">
+      <button id="theme-toggle" class="p-2 rounded-full bg-gray-200 dark:bg-gray-700 transition">
         <svg id="moon" class="w-5 h-5 block dark:hidden text-gray-800" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" d="M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z" />
         </svg>
         <svg id="sun" class="w-5 h-5 hidden dark:block text-yellow-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m8.66-8.66h1M4.34 12H3m15.36 6.36l.7.7M5.64 5.64l-.7-.7m12.02 0l.7-.7M5.64 18.36l-.7.7M12 8a4 4 0 100 8 4 4 0 000-8z"/>
+          <path stroke-linecap="round" stroke-linejoin="round"
+            d="M12 3v1m0 16v1m8.66-8.66h1M4.34 12H3m15.36 6.36l.7.7M5.64 5.64l-.7-.7m12.02 0l.7-.7M5.64 18.36l-.7.7M12 8a4 4 0 100 8 4 4 0 000-8z" />
         </svg>
       </button>
+
       <button id="menu-btn" class="md:hidden flex flex-col space-y-1">
         <span class="w-6 h-0.5 bg-gray-700 dark:bg-gray-100"></span>
         <span class="w-6 h-0.5 bg-gray-700 dark:bg-gray-100"></span>
@@ -60,7 +73,8 @@
   </div>
 
   <nav id="mobile-menu" class="hidden flex-col absolute bg-white dark:bg-[#0D2145] w-full top-full left-0 shadow-md md:hidden">
-    <a href="personnel.html" class="py-3 px-6 border-b hover:bg-gray-50 dark:hover:bg-gray-800">Personnel</a>
+    <a href="index.html" class="py-3 px-6 border-b hover:bg-gray-50 dark:hover:bg-gray-800">Home</a>
+    <a href="personnel.html" class="py-3 px-6 border-b text-[#E87700] font-semibold">Personnel</a>
     <a href="news.html" class="py-3 px-6 border-b hover:bg-gray-50 dark:hover:bg-gray-800">News</a>
     <a href="research.html" class="py-3 px-6 border-b hover:bg-gray-50 dark:hover:bg-gray-800">Research</a>
     <a href="contact.html" class="py-3 px-6 hover:bg-gray-50 dark:hover:bg-gray-800">Contact</a>
@@ -73,14 +87,16 @@
     <div class="absolute inset-0 animated-overlay rounded-b-3xl"></div>
     <div class="absolute inset-0 flex flex-col justify-center items-center text-center text-white px-6">
       <h1 class="text-3xl md:text-5xl font-bold drop-shadow-lg fade-in" data-aos="fade-up">Meet the Team</h1>
-      <p class="mt-3 md:mt-5 text-lg md:text-xl text-gray-200 fade-in" data-aos="fade-up" data-aos-delay="200">Faculty, students, and researchers driving EvoAU forward</p>
+      <p class="mt-3 md:mt-5 text-lg md:text-xl text-gray-200 fade-in" data-aos="fade-up" data-aos-delay="200">
+        Faculty, graduate, and undergraduate researchers powering EvoAU
+      </p>
     </div>
   </div>
 </section>
 
 <!-- TEAM GRID -->
 <main class="max-w-7xl mx-auto px-6 py-16">
-  <div id="teamContainer" class="space-y-12 fade-in"></div>
+  <div id="teamContainer" class="space-y-16 fade-in"></div>
 </main>
 
 <!-- Footer -->
@@ -93,7 +109,7 @@
 <script>
 AOS.init({ duration: 800, once: true });
 
-// Fade-in on scroll
+// Fade-in animation
 const elements = document.querySelectorAll(".fade-in");
 const observer = new IntersectionObserver((entries) => {
   entries.forEach((entry) => { if (entry.isIntersecting) entry.target.classList.add("visible"); });
@@ -101,20 +117,41 @@ const observer = new IntersectionObserver((entries) => {
 elements.forEach((el) => observer.observe(el));
 
 // Mobile menu toggle
-document.getElementById("menu-btn").onclick = () => document.getElementById("mobile-menu").classList.toggle("hidden");
+document.getElementById("menu-btn").onclick = () =>
+  document.getElementById("mobile-menu").classList.toggle("hidden");
 
-// Dark mode toggle
-document.getElementById("theme-toggle").addEventListener("click", () => document.documentElement.classList.toggle("dark"));
+// DARK MODE TOGGLE + PERSISTENCE
+const themeToggle = document.getElementById("theme-toggle");
+const htmlEl = document.documentElement;
 
-// Populate team members grouped by Grad vs Undergrad
+// Check for saved theme preference or use system preference
+const savedTheme = localStorage.getItem("theme");
+const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+if (savedTheme === "dark" || (!savedTheme && systemPrefersDark)) {
+  htmlEl.classList.add("dark");
+} else {
+  htmlEl.classList.remove("dark");
+}
+
+themeToggle.addEventListener("click", () => {
+  htmlEl.classList.toggle("dark");
+  localStorage.setItem(
+    "theme",
+    htmlEl.classList.contains("dark") ? "dark" : "light"
+  );
+});
+
+// Populate team by category
 document.addEventListener("DOMContentLoaded", () => {
   const container = document.getElementById("teamContainer");
 
+  const faculty = teamData.filter(m => m.roleCategory === "Faculty");
   const gradStudents = teamData.filter(m => m.roleCategory === "Grad Students");
   const undergradStudents = teamData.filter(m => m.roleCategory === "Undergrad Students");
 
-  function appendSection(title, members){
-    if(members.length === 0) return;
+  function appendSection(title, members) {
+    if (members.length === 0) return;
     const section = document.createElement("section");
     section.innerHTML = `<h2 class="text-3xl font-bold text-[#E87700] mb-6">${title}</h2>`;
     const grid = document.createElement("div");
@@ -124,13 +161,15 @@ document.addEventListener("DOMContentLoaded", () => {
     container.appendChild(section);
   }
 
+  appendSection("Faculty", faculty);
   appendSection("Graduate Students", gradStudents);
   appendSection("Undergraduate Students", undergradStudents);
 });
 
-function createMemberCard(member){
+function createMemberCard(member) {
   const card = document.createElement("article");
-  card.className = "bg-white dark:bg-[#1B3358] rounded-2xl shadow-md hover:shadow-xl border border-gray-100 dark:border-gray-600 overflow-hidden flex flex-col items-center transition-transform hover:-translate-y-1";
+  card.className =
+    "bg-white dark:bg-[#1B3358] rounded-2xl shadow-md hover:shadow-xl border border-gray-100 dark:border-gray-600 overflow-hidden flex flex-col items-center transition-transform hover:-translate-y-1";
   card.innerHTML = `
     <img src="${member.photo}" alt="${member.name}" class="w-full h-72 object-cover rounded-t-2xl">
     <div class="p-6 text-center">

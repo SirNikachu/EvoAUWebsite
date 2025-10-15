@@ -4,7 +4,15 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Contact | EvoAU</title>
+  
+  <!-- Tailwind -->
   <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+    }
+  </script>
+  
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
   <style>
     @keyframes gradientMove {
@@ -31,7 +39,7 @@
     .underline-animate:hover::after { width: 100%; }
   </style>
 </head>
-<body class="font-sans text-gray-800 bg-white dark:bg-[#0D2145] dark:text-gray-100">
+<body class="font-sans text-gray-800 bg-white dark:bg-[#0D2145] dark:text-gray-100 transition-colors duration-500">
 
   <!-- NAVBAR -->
   <header class="w-full backdrop-blur-md bg-white/70 dark:bg-[#0D2145]/70 shadow-sm fixed top-0 left-0 z-50 border-b border-white/40">
@@ -58,7 +66,7 @@
 
       <!-- Dark Mode + Mobile Toggle -->
       <div class="flex items-center space-x-4">
-        <button id="theme-toggle" class="p-2 rounded-full bg-gray-200 dark:bg-gray-700">
+        <button id="theme-toggle" class="p-2 rounded-full bg-gray-200 dark:bg-gray-700 transition">
           <svg id="moon" class="w-5 h-5 block dark:hidden text-gray-800" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" d="M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z" />
           </svg>
@@ -180,10 +188,26 @@
     document.getElementById("menu-btn").onclick = () =>
       document.getElementById("mobile-menu").classList.toggle("hidden");
 
-    // Dark mode
-    const btn = document.getElementById("theme-toggle");
-    btn.addEventListener("click", () => {
-      document.documentElement.classList.toggle("dark");
+    // DARK MODE TOGGLE + PERSISTENCE
+    const themeToggle = document.getElementById("theme-toggle");
+    const htmlEl = document.documentElement;
+
+    // Check for saved theme preference or use system preference
+    const savedTheme = localStorage.getItem("theme");
+    const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+    if (savedTheme === "dark" || (!savedTheme && systemPrefersDark)) {
+      htmlEl.classList.add("dark");
+    } else {
+      htmlEl.classList.remove("dark");
+    }
+
+    themeToggle.addEventListener("click", () => {
+      htmlEl.classList.toggle("dark");
+      localStorage.setItem(
+        "theme",
+        htmlEl.classList.contains("dark") ? "dark" : "light"
+      );
     });
   </script>
 </body>

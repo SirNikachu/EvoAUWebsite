@@ -1,4 +1,50 @@
 const teamData = [
+  // Faculty
+  {
+    name: "Mehmet Arik",
+    role: "Faculty",
+    university: "Auburn University, Engineering",
+    photo: "https://eng.auburn.edu/images/image-not-available.jpg",
+    email: "mza0223@auburn.edu",
+    phone: "1234567890",
+    website: "https://eng.auburn.edu/directory/mza0223",
+    roleCategory: "Faculty",
+    subRole: ""
+  },
+  {
+    name: "Jay Khodadadi",
+    role: "Faculty",
+    university: "Auburn University, Engineering",
+    photo: "https://eng.auburn.edu/images/image-not-available.jpg",
+    email: "khodajm@auburn.edu",
+    phone: "1234567890",
+    website: "https://eng.auburn.edu/directory/khodajm",
+    roleCategory: "Faculty",
+    subRole: ""
+  },
+  {
+    name: "Pan He",
+    role: "Faculty",
+    university: "Auburn University, Engineering",
+    photo: "https://eng.auburn.edu/images/image-not-available.jpg",
+    email: "pzh0057@auburn.edu",
+    phone: "1234567890",
+    website: "https://eng.auburn.edu/directory/pzh0057",
+    roleCategory: "Faculty",
+    subRole: ""
+  },
+  {
+    name: "Song-Yul Choe",
+    role: "Faculty",
+    university: "Auburn University, Engineering",
+    photo: "https://eng.auburn.edu/images/image-not-available.jpg",
+    email: "choeson@auburn.edu",
+    phone: "1234567890",
+    website: "https://eng.auburn.edu/directory/choeson",
+    roleCategory: "Faculty",
+    subRole: ""
+  },
+  
   // Grad Students
   {
     name: "Faisal Ahmed",
@@ -6,8 +52,8 @@ const teamData = [
     university: "Auburn University, Engineering",
     photo: "https://eng.auburn.edu/images/image-not-available.jpg",
     email: "fza0062@auburn.edu",
-    phone: "1234567890",
-    website: "https://nepcm.eng.auburn.edu/news.php",
+    phone: "",
+    website: "",
     roleCategory: "Grad Students",
     subRole: ""
   },
@@ -17,8 +63,8 @@ const teamData = [
     university: "Auburn University, Engineering",
     photo: "https://eng.auburn.edu/images/image-not-available.jpg",
     email: "jts0143@auburn.edu",
-    phone: "1234567890",
-    website: "https://nepcm.eng.auburn.edu/news.php",
+    phone: "",
+    website: "",
     roleCategory: "Grad Students",
     subRole: ""
   },
@@ -28,8 +74,8 @@ const teamData = [
     university: "Auburn University, Engineering",
     photo: "https://eng.auburn.edu/images/image-not-available.jpg",
     email: "trk0028@auburn.edu",
-    phone: "1234567890",
-    website: "https://nepcm.eng.auburn.edu/news.php",
+    phone: "",
+    website: "",
     roleCategory: "Grad Students",
     subRole: ""
   },
@@ -39,8 +85,8 @@ const teamData = [
     university: "Auburn University, Engineering",
     photo: "https://eng.auburn.edu/images/image-not-available.jpg",
     email: "bikram.bhattarai@auburn.edu",
-    phone: "1234567890",
-    website: "https://nepcm.eng.auburn.edu/news.php",
+    phone: "",
+    website: "",
     roleCategory: "Grad Students",
     subRole: ""
   },
