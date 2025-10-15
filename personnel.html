@@ -177,15 +177,33 @@ function createMemberCard(member) {
       <h3 class="text-xl font-bold text-[#D46A1F] mb-1">${member.name}</h3>
       <p class="text-gray-700 dark:text-gray-200 mb-1">${member.role}</p>
       <p class="text-gray-500 dark:text-gray-400 text-sm mb-3">${member.university}</p>
-      <div class="flex justify-center gap-3 mt-2 flex-wrap">
-        ${member.email ? `<a href="mailto:${member.email}" class="text-blue-600 hover:underline text-sm">Email</a>` : ''}
-        ${member.phone ? `<a href="tel:${member.phone}" class="text-blue-600 hover:underline text-sm">Call</a>` : ''}
-        ${member.website ? `<a href="${member.website}" target="_blank" class="text-blue-600 hover:underline text-sm">Website</a>` : ''}
+      <div class="flex justify-center gap-4 mt-2">
+        ${member.email ? `<a href="mailto:${member.email}" class="text-blue-600 hover:text-blue-400" title="Email">
+          <!-- Envelope Icon -->
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8m-18 0v8a2 2 0 002 2h14a2 2 0 002-2V8m-18 0l9 6 9-6"/>
+          </svg>
+        </a>` : ''}
+        ${member.phone ? `<a href="tel:${member.phone}" class="text-green-600 hover:text-green-400" title="Call">
+          <!-- Phone Icon -->
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h2a2 2 0 012 2v3a2 2 0 01-2 2H5a2 2 0 01-2-2V5zm12 6a2 2 0 012-2h2a2 2 0 012 2v3a2 2 0 01-2 2h-2a2 2 0 01-2-2v-3z"/>
+          </svg>
+        </a>` : ''}
+        ${member.website ? `<a href="${member.website}" target="_blank" class="text-orange-500 hover:text-orange-300" title="Website">
+          <!-- Globe Icon -->
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 2a10 10 0 100 20 10 10 0 000-20zm0 0v20m0-20L4.93 7.07M12 2l7.07 7.07M2 12h20M2 12L7.07 4.93M12 22l7.07-7.07M22 12l-7.07-7.07"/>
+          </svg>
+        </a>` : ''}
       </div>
     </div>
   `;
   return card;
 }
+
+
+
 </script>
 </body>
 </html>
