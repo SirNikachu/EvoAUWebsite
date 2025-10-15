@@ -1,93 +1,190 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Contact | EvoAU</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+  <style>
+    @keyframes gradientMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    .animated-overlay {
+      background: linear-gradient(270deg, rgba(13,33,69,0.7), rgba(232,119,0,0.6));
+      background-size: 400% 400%;
+      animation: gradientMove 12s ease infinite;
+    }
+    .fade-in { opacity: 0; transform: translateY(20px); transition: all 0.8s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+    .underline-animate::after {
+      content: "";
+      display: block;
+      width: 0;
+      height: 3px;
+      background: #e87700;
+      transition: width 0.4s;
+      margin-top: 4px;
+    }
+    .underline-animate:hover::after { width: 100%; }
+  </style>
 </head>
-<body class="bg-gray-50 text-gray-800 font-sans">
+<body class="font-sans text-gray-800 bg-white dark:bg-[#0D2145] dark:text-gray-100">
 
-  <!-- Navigation Bar -->
-  <nav class="bg-[#1A2B5C] text-white">
-    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+  <!-- NAVBAR -->
+  <header class="w-full backdrop-blur-md bg-white/70 dark:bg-[#0D2145]/70 shadow-sm fixed top-0 left-0 z-50 border-b border-white/40">
+    <div class="max-w-7xl mx-auto flex items-center justify-between px-6 py-3">
       <!-- Logo -->
-      <a href="index.html" class="flex items-center space-x-2">
-        <img src="logo.png" alt="EvoAU Logo" class="h-10 w-auto" />
-        <div>
-          <h1 class="text-xl font-bold leading-none">EvoAU</h1>
-          <p class="text-xs text-gray-200 leading-none">
-            Electric Vehicle Optimization @ Auburn University
-          </p>
-        </div>
-      </a>
+      <div class="flex items-center space-x-3">
+        <a href="index.html" class="flex items-center space-x-2">
+          <img src="logo.png" alt="EvoAU Logo" class="h-10 w-auto" />
+          <div>
+            <h1 class="text-lg font-semibold text-[#0D2145] dark:text-white leading-none">EvoAU</h1>
+            <p class="text-xs text-gray-500 dark:text-gray-300 leading-none">Electric Vehicle Optimization @ Auburn University</p>
+          </div>
+        </a>
+      </div>
 
-      <!-- Nav Links -->
-      <div class="space-x-6">
-        <a href="index.html" class="hover:underline">Home</a>
-        <a href="personnel.html" class="hover:underline">Personnel</a>
-        <a href="news.html" class="hover:underline">News</a>
-        <a href="research.html" class="hover:underline">Research</a>
-        <a href="contact.html" class="hover:underline font-semibold">Contact</a>
+      <!-- Navigation -->
+      <nav class="hidden md:flex space-x-6 text-sm font-medium">
+        <a href="index.html" class="hover:text-[#E87700] transition">Home</a>
+        <a href="personnel.html" class="hover:text-[#E87700] transition">Personnel</a>
+        <a href="news.html" class="hover:text-[#E87700] transition">News</a>
+        <a href="research.html" class="hover:text-[#E87700] transition">Research</a>
+        <a href="contact.html" class="text-[#E87700] font-semibold">Contact</a>
+      </nav>
+
+      <!-- Dark Mode + Mobile Toggle -->
+      <div class="flex items-center space-x-4">
+        <button id="theme-toggle" class="p-2 rounded-full bg-gray-200 dark:bg-gray-700">
+          <svg id="moon" class="w-5 h-5 block dark:hidden text-gray-800" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z" />
+          </svg>
+          <svg id="sun" class="w-5 h-5 hidden dark:block text-yellow-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m8.66-8.66h1M4.34 12H3m15.36 6.36l.7.7M5.64 5.64l-.7-.7m12.02 0l.7-.7M5.64 18.36l-.7.7M12 8a4 4 0 100 8 4 4 0 000-8z"/>
+          </svg>
+        </button>
+        <button id="menu-btn" class="md:hidden flex flex-col space-y-1">
+          <span class="w-6 h-0.5 bg-gray-700 dark:bg-gray-100"></span>
+          <span class="w-6 h-0.5 bg-gray-700 dark:bg-gray-100"></span>
+          <span class="w-6 h-0.5 bg-gray-700 dark:bg-gray-100"></span>
+        </button>
       </div>
     </div>
-  </nav>
 
-  <!-- Hero Section -->
-  <header class="bg-[#1A2B5C] text-white py-16">
-    <div class="max-w-5xl mx-auto px-6 text-center">
-      <h1 class="text-4xl md:text-5xl font-bold mb-4">Contact Us</h1>
-      <p class="text-lg md:text-xl">
-        Get in touch with our team or program partners
-      </p>
-    </div>
+    <!-- Mobile Nav -->
+    <nav id="mobile-menu" class="hidden flex-col absolute bg-white dark:bg-[#0D2145] w-full top-full left-0 shadow-md md:hidden">
+      <a href="index.html" class="py-3 px-6 border-b hover:bg-gray-50 dark:hover:bg-gray-800">Home</a>
+      <a href="personnel.html" class="py-3 px-6 border-b hover:bg-gray-50 dark:hover:bg-gray-800">Personnel</a>
+      <a href="news.html" class="py-3 px-6 border-b hover:bg-gray-50 dark:hover:bg-gray-800">News</a>
+      <a href="research.html" class="py-3 px-6 border-b hover:bg-gray-50 dark:hover:bg-gray-800">Research</a>
+      <a href="contact.html" class="py-3 px-6 hover:bg-gray-50 dark:hover:bg-gray-800">Contact</a>
+    </nav>
   </header>
 
-  <!-- Contact Info Section -->
-  <main class="max-w-5xl mx-auto px-6 py-12 space-y-8">
+  <!-- HERO -->
+  <section class="relative mt-16">
+    <div class="relative w-full h-72 md:h-96 bg-fixed bg-center bg-cover" style="background-image: url('banner-contact.jpg');">
+      <div class="absolute inset-0 animated-overlay"></div>
+      <div class="absolute inset-0 flex flex-col justify-center items-center text-center text-white px-6">
+        <h2 class="text-3xl md:text-5xl font-bold uppercase tracking-wide drop-shadow-lg fade-in" data-aos="fade-up">Contact EvoAU</h2>
+        <p class="mt-4 max-w-2xl text-base md:text-lg leading-relaxed text-gray-200 fade-in" data-aos="fade-up" data-aos-delay="200">
+          Reach out to our team, collaborators, or program partners.
+        </p>
+      </div>
+    </div>
+  </section>
 
-    <!-- Point of Contact -->
-    <section class="bg-white shadow-md rounded-lg p-6 hover:shadow-xl transition-shadow">
-      <h2 class="text-2xl font-semibold text-[#1A2B5C] mb-4">Point of Contact</h2>
-      <p class="text-gray-700 leading-relaxed">
-        <span class="font-semibold">Name:</span> [Insert Name Here] <br />
-        <span class="font-semibold">Phone:</span> (XXX) XXX-XXXX <br />
-        <span class="font-semibold">Fax:</span> (XXX) XXX-XXXX <br />
-        <span class="font-semibold">Email:</span>
-        <a href="mailto:example@university.edu" class="text-[#E87700] hover:underline">
-          example@university.edu
-        </a>
-      </p>
-    </section>
+  <!-- CONTACT GRID -->
+  <main class="max-w-6xl mx-auto px-6 py-16 space-y-12">
+    <h2 class="text-2xl md:text-3xl font-bold text-[#E87700] mb-12 underline-animate text-center">// Connect With Us</h2>
 
-    <!-- Primary Investigator -->
-    <section class="bg-white shadow-md rounded-lg p-6 hover:shadow-xl transition-shadow">
-      <h2 class="text-2xl font-semibold text-[#1A2B5C] mb-4">Primary Investigator</h2>
-      <p class="text-gray-700 leading-relaxed">
-        <span class="font-semibold">Name:</span> [Insert Name Here] <br />
-        <span class="font-semibold">Phone:</span> (XXX) XXX-XXXX <br />
-        <span class="font-semibold">Fax:</span> (XXX) XXX-XXXX <br />
-        <span class="font-semibold">Email:</span>
-        <a href="mailto:example@auburn.edu" class="text-[#E87700] hover:underline">
-          example@auburn.edu
-        </a>
-      </p>
-    </section>
+    <!-- Contact Info Row -->
+    <div class="grid md:grid-cols-3 gap-10 fade-in">
+      <article class="bg-white dark:bg-[#1B3358] rounded-2xl shadow-md hover:shadow-xl border border-gray-100 dark:border-gray-600 p-8 text-center transition-transform hover:-translate-y-2" data-aos="fade-up">
+        <h3 class="text-xl md:text-2xl font-bold text-[#0D2145] dark:text-white mb-2">Point of Contact</h3>
+        <p class="text-gray-700 dark:text-gray-200 mb-1"><span class="font-semibold">Name:</span> [Insert Name]</p>
+        <p class="text-gray-700 dark:text-gray-200 mb-1"><span class="font-semibold">Phone:</span> (XXX) XXX-XXXX</p>
+        <p class="text-gray-700 dark:text-gray-200 mb-1"><span class="font-semibold">Fax:</span> (XXX) XXX-XXXX</p>
+        <p class="text-gray-700 dark:text-gray-200"><span class="font-semibold">Email:</span> 
+          <a href="mailto:example@university.edu" class="text-[#E87700] hover:underline">example@university.edu</a>
+        </p>
+      </article>
 
-    <!-- Department of Energy -->
-    <section class="bg-white shadow-md rounded-lg p-6 hover:shadow-xl transition-shadow">
-      <h2 class="text-2xl font-semibold text-[#1A2B5C] mb-4">Department of Energy</h2>
-      <p class="text-gray-700 leading-relaxed">
-        <span class="font-semibold">Program Manager:</span> [Insert Name Here] <br />
-        <span class="font-semibold">Phone:</span> (XXX) XXX-XXXX <br />
-        <span class="font-semibold">Website:</span>
-        <a href="#" class="text-[#E87700] hover:underline">
-          Department of Energy
-        </a>
-      </p>
-    </section>
+      <article class="bg-white dark:bg-[#1B3358] rounded-2xl shadow-md hover:shadow-xl border border-gray-100 dark:border-gray-600 p-8 text-center transition-transform hover:-translate-y-2" data-aos="fade-up" data-aos-delay="100">
+        <h3 class="text-xl md:text-2xl font-bold text-[#0D2145] dark:text-white mb-2">Primary Investigator</h3>
+        <p class="text-gray-700 dark:text-gray-200 mb-1"><span class="font-semibold">Name:</span> [Insert Name]</p>
+        <p class="text-gray-700 dark:text-gray-200 mb-1"><span class="font-semibold">Phone:</span> (XXX) XXX-XXXX</p>
+        <p class="text-gray-700 dark:text-gray-200 mb-1"><span class="font-semibold">Fax:</span> (XXX) XXX-XXXX</p>
+        <p class="text-gray-700 dark:text-gray-200"><span class="font-semibold">Email:</span> 
+          <a href="mailto:example@auburn.edu" class="text-[#E87700] hover:underline">example@auburn.edu</a>
+        </p>
+      </article>
 
+      <article class="bg-white dark:bg-[#1B3358] rounded-2xl shadow-md hover:shadow-xl border border-gray-100 dark:border-gray-600 p-8 text-center transition-transform hover:-translate-y-2" data-aos="fade-up" data-aos-delay="200">
+        <h3 class="text-xl md:text-2xl font-bold text-[#0D2145] dark:text-white mb-2">Department of Energy</h3>
+        <p class="text-gray-700 dark:text-gray-200 mb-1"><span class="font-semibold">Program Manager:</span> [Insert Name]</p>
+        <p class="text-gray-700 dark:text-gray-200 mb-1"><span class="font-semibold">Phone:</span> (XXX) XXX-XXXX</p>
+        <p class="text-gray-700 dark:text-gray-200"><span class="font-semibold">Website:</span> 
+          <a href="#" class="text-[#E87700] hover:underline">Department of Energy</a>
+        </p>
+      </article>
+    </div>
+
+    <!-- Contact Form -->
+    <article class="bg-white dark:bg-[#1B3358] rounded-2xl shadow-md hover:shadow-xl border border-gray-100 dark:border-gray-600 p-8 fade-in transition-transform hover:-translate-y-2" data-aos="fade-up">
+      <h3 class="text-2xl font-semibold text-[#0D2145] dark:text-white mb-6 text-center">Send Us a Message</h3>
+      <form action="#" method="POST" class="space-y-6 max-w-3xl mx-auto">
+        <div>
+          <label class="block text-gray-700 dark:text-gray-200 mb-2 font-medium" for="name">Name</label>
+          <input type="text" id="name" name="name" placeholder="Your Name" class="w-full border border-gray-300 dark:border-gray-600 rounded-lg p-3 focus:ring-2 focus:ring-[#E87700] focus:outline-none transition"/>
+        </div>
+        <div>
+          <label class="block text-gray-700 dark:text-gray-200 mb-2 font-medium" for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="you@example.com" class="w-full border border-gray-300 dark:border-gray-600 rounded-lg p-3 focus:ring-2 focus:ring-[#E87700] focus:outline-none transition"/>
+        </div>
+        <div>
+          <label class="block text-gray-700 dark:text-gray-200 mb-2 font-medium" for="message">Message</label>
+          <textarea id="message" name="message" rows="6" placeholder="Your message..." class="w-full border border-gray-300 dark:border-gray-600 rounded-lg p-3 focus:ring-2 focus:ring-[#E87700] focus:outline-none transition"></textarea>
+        </div>
+        <div class="text-center">
+          <button type="submit" class="bg-[#E87700] text-white font-semibold px-8 py-3 rounded-lg hover:bg-[#d46b00] transition">Send Message</button>
+        </div>
+      </form>
+    </article>
   </main>
 
+  <!-- FOOTER -->
+  <footer class="bg-gray-100 dark:bg-[#0D2145] border-t border-gray-200 dark:border-gray-700 py-6 text-center text-sm text-gray-500 dark:text-gray-300">
+    © 2025 EvoAU — Electric Vehicle Optimization @ Auburn University
+  </footer>
+
+  <!-- JS -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    // AOS
+    AOS.init({ duration: 800, once: true });
+
+    // Fade-in on scroll
+    const elements = document.querySelectorAll(".fade-in");
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) entry.target.classList.add("visible");
+      });
+    });
+    elements.forEach((el) => observer.observe(el));
+
+    // Mobile menu
+    document.getElementById("menu-btn").onclick = () =>
+      document.getElementById("mobile-menu").classList.toggle("hidden");
+
+    // Dark mode
+    const btn = document.getElementById("theme-toggle");
+    btn.addEventListener("click", () => {
+      document.documentElement.classList.toggle("dark");
+    });
+  </script>
 </body>
 </html>

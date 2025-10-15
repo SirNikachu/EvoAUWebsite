@@ -1,82 +1,175 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EvoAU News</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EvoAU News</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+  <style>
+    @keyframes gradientMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    .animated-overlay {
+      background: linear-gradient(270deg, rgba(13,33,69,0.7), rgba(232,119,0,0.6));
+      background-size: 400% 400%;
+      animation: gradientMove 12s ease infinite;
+    }
+    .fade-in { opacity: 0; transform: translateY(20px); transition: all 0.8s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+    .underline-animate::after {
+      content: "";
+      display: block;
+      width: 0;
+      height: 3px;
+      background: #e87700;
+      transition: width 0.4s;
+      margin-top: 4px;
+    }
+    .underline-animate:hover::after { width: 100%; }
+  </style>
 </head>
-<body class="bg-gray-50 text-gray-800 font-sans">
+<body class="font-sans text-gray-800 bg-white dark:bg-[#0D2145] dark:text-gray-100">
 
-<!-- Navigation Bar -->
-<nav class="bg-[#1A2B5C] text-white">
-    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-        <!-- Logo -->
+  <!-- NAVBAR -->
+  <header class="w-full backdrop-blur-md bg-white/70 dark:bg-[#0D2145]/70 shadow-sm fixed top-0 left-0 z-50 border-b border-white/40">
+    <div class="max-w-7xl mx-auto flex items-center justify-between px-6 py-3">
+      <!-- Logo -->
+      <div class="flex items-center space-x-3">
         <a href="index.html" class="flex items-center space-x-2">
-            <img src="logo.png" alt="EvoAU Logo" class="h-10 w-auto" />
-            <div>
-                <h1 class="text-xl font-bold leading-none">EvoAU</h1>
-                <p class="text-xs text-gray-200 leading-none">Electric Vehicle Optimization @ Auburn University</p>
-            </div>
+          <img src="logo.png" alt="EvoAU Logo" class="h-10 w-auto" />
+          <div>
+            <h1 class="text-lg font-semibold text-[#0D2145] dark:text-white leading-none">EvoAU</h1>
+            <p class="text-xs text-gray-500 dark:text-gray-300 leading-none">Electric Vehicle Optimization @ Auburn University</p>
+          </div>
         </a>
+      </div>
 
-        <!-- Nav Links -->
-        <div class="space-x-6">
-            <a href="index.html" class="hover:underline">Home</a>
-            <a href="personnel.html" class="hover:underline">Personnel</a>
-            <a href="news.html" class="hover:underline font-semibold">News</a>
-            <a href="research.html" class="hover:underline">Research</a>
-            <a href="contact.html" class="hover:underline">Contact</a>
-        </div>
+      <!-- Navigation -->
+      <nav class="hidden md:flex space-x-6 text-sm font-medium">
+        <a href="index.html" class="hover:text-[#E87700] transition">Home</a>
+        <a href="personnel.html" class="hover:text-[#E87700] transition">Personnel</a>
+        <a href="news.html" class="text-[#E87700] font-semibold">News</a>
+        <a href="research.html" class="hover:text-[#E87700] transition">Research</a>
+        <a href="contact.html" class="hover:text-[#E87700] transition">Contact</a>
+      </nav>
+
+      <!-- Dark Mode + Mobile Toggle -->
+      <div class="flex items-center space-x-4">
+        <button id="theme-toggle" class="p-2 rounded-full bg-gray-200 dark:bg-gray-700">
+          <svg id="moon" class="w-5 h-5 block dark:hidden text-gray-800" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z" />
+          </svg>
+          <svg id="sun" class="w-5 h-5 hidden dark:block text-yellow-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m8.66-8.66h1M4.34 12H3m15.36 6.36l.7.7M5.64 5.64l-.7-.7m12.02 0l.7-.7M5.64 18.36l-.7.7M12 8a4 4 0 100 8 4 4 0 000-8z"/>
+          </svg>
+        </button>
+        <button id="menu-btn" class="md:hidden flex flex-col space-y-1">
+          <span class="w-6 h-0.5 bg-gray-700 dark:bg-gray-100"></span>
+          <span class="w-6 h-0.5 bg-gray-700 dark:bg-gray-100"></span>
+          <span class="w-6 h-0.5 bg-gray-700 dark:bg-gray-100"></span>
+        </button>
+      </div>
     </div>
-</nav>
 
+    <!-- Mobile Nav -->
+    <nav id="mobile-menu" class="hidden flex-col absolute bg-white dark:bg-[#0D2145] w-full top-full left-0 shadow-md md:hidden">
+      <a href="index.html" class="py-3 px-6 border-b hover:bg-gray-50 dark:hover:bg-gray-800">Home</a>
+      <a href="personnel.html" class="py-3 px-6 border-b hover:bg-gray-50 dark:hover:bg-gray-800">Personnel</a>
+      <a href="news.html" class="py-3 px-6 border-b hover:bg-gray-50 dark:hover:bg-gray-800">News</a>
+      <a href="research.html" class="py-3 px-6 border-b hover:bg-gray-50 dark:hover:bg-gray-800">Research</a>
+      <a href="contact.html" class="py-3 px-6 hover:bg-gray-50 dark:hover:bg-gray-800">Contact</a>
+    </nav>
+  </header>
 
-    <!-- Hero Section -->
-    <header class="bg-[#1A2B5C] text-white py-16">
-        <div class="max-w-5xl mx-auto px-6 text-center">
-            <h1 class="text-4xl md:text-5xl font-bold mb-4">EvoAU News</h1>
-            <p class="text-lg md:text-xl">Updates on research, student achievements, and our work at Auburn University</p>
-        </div>
-    </header>
+  <!-- HERO -->
+  <section class="relative mt-16">
+    <div class="relative w-full h-72 md:h-96 bg-fixed bg-center bg-cover" style="background-image: url('banner-news.jpg');">
+      <div class="absolute inset-0 animated-overlay"></div>
+      <div class="absolute inset-0 flex flex-col justify-center items-center text-center text-white px-6">
+        <h2 class="text-3xl md:text-5xl font-bold uppercase tracking-wide drop-shadow-lg fade-in" data-aos="fade-up">EvoAU News</h2>
+        <p class="mt-4 max-w-2xl text-base md:text-lg leading-relaxed text-gray-200 fade-in" data-aos="fade-up" data-aos-delay="200">
+          Discover our latest research breakthroughs, student achievements, and program milestones.
+        </p>
+      </div>
+    </div>
+  </section>
 
-    <!-- News Articles -->
-    <main class="max-w-5xl mx-auto px-6 py-12 space-y-8">
+  <!-- NEWS GRID -->
+  <main class="max-w-6xl mx-auto px-6 py-16">
+    <h2 class="text-2xl md:text-3xl font-bold text-[#E87700] mb-12 underline-animate text-center">// Latest Updates</h2>
+    <div class="grid md:grid-cols-2 gap-10 fade-in">
+      <!-- Article Cards -->
+      <article class="bg-white dark:bg-[#1B3358] rounded-2xl shadow-md hover:shadow-xl border border-gray-100 dark:border-gray-600 overflow-hidden p-8 transition-transform hover:-translate-y-2" data-aos="fade-up">
+        <h3 class="text-xl md:text-2xl font-bold text-[#0D2145] dark:text-white mb-2">November 2011 — Theses & Dissertations</h3>
+        <p class="text-gray-700 dark:text-gray-200 mb-2 leading-relaxed">
+          As of November 2011, three graduate students completed notable work:
+        </p>
+        <ul class="list-disc list-inside mb-2 text-gray-700 dark:text-gray-200">
+          <li>Dr. Liwu Fan (Auburn) <a href="http://etd.auburn.edu/etd/handle/10415/2707" class="text-[#E87700] hover:underline">Thesis</a></li>
+          <li>Dr. Dan Clary (Auburn) <a href="http://etd.auburn.edu/etd/handle/10415/2855" class="text-[#E87700] hover:underline">Thesis</a></li>
+          <li>Mr. Peter Sakalakus (USA)</li>
+        </ul>
+        <p class="text-sm text-gray-500 dark:text-gray-400">Posted: Sep 25, 2012 | Updated: Sep 25, 2012</p>
+      </article>
 
-        <!-- Article 1 -->
-        <article class="bg-white shadow-md rounded-lg p-6 hover:shadow-xl transition-shadow">
-            <h2 class="text-2xl font-semibold mb-2">November 2011 - Theses/Dissertations</h2>
-            <p class="mb-3">As of November 2011, three (3) graduate students:</p>
-            <ul class="list-disc list-inside mb-3">
-                <li>Dr. Liwu Fan (Auburn) <a href="http://etd.auburn.edu/etd/handle/10415/2707" class="text-blue-600 hover:underline">thesis</a></li>
-                <li>Dr. Dan Clary (Auburn) <a href="http://etd.auburn.edu/etd/handle/10415/2855" class="text-blue-600 hover:underline">thesis</a></li>
-                <li>Mr. Peter Sakalakus (USA)</li>
-            </ul>
-            <p class="text-sm text-gray-500">Posted: Tue, 25 Sep 2012 20:12:44 | Updated: Tue, 25 Sep 2012 20:14:08</p>
-        </article>
+      <article class="bg-white dark:bg-[#1B3358] rounded-2xl shadow-md hover:shadow-xl border border-gray-100 dark:border-gray-600 overflow-hidden p-8 transition-transform hover:-translate-y-2" data-aos="fade-up" data-aos-delay="100">
+        <h3 class="text-xl md:text-2xl font-bold text-[#0D2145] dark:text-white mb-2">May 2012 — Three Fellowships Awarded</h3>
+        <p class="text-gray-700 dark:text-gray-200 mb-2 leading-relaxed">
+          Graduate students from Auburn (H. Babaei, H. Ghaednia) and South Alabama (N. Brock) received Alabama EPSCoR GRSP Fellowships to support research from Aug 2012–Aug 2013.
+        </p>
+        <p class="text-sm text-gray-500 dark:text-gray-400">Posted: Sep 25, 2012</p>
+      </article>
 
-        <!-- Article 2 -->
-        <article class="bg-white shadow-md rounded-lg p-6 hover:shadow-xl transition-shadow">
-            <h2 class="text-2xl font-semibold mb-2">May 2012 - Three Fellowships Awarded</h2>
-            <p class="mb-3">Three graduate students at Auburn (Mr. H. Babaei, Mr. Hamed Ghaednia) and South Alabama (Mr. Nathan Brock) were awarded competitive Alabama EPSCoR GRSP Fellowships to support their research from August 2012-August 2013.</p>
-            <p class="text-sm text-gray-500">Posted: Tue, 25 Sep 2012 20:18:38 | Updated: N/A</p>
-        </article>
+      <article class="bg-white dark:bg-[#1B3358] rounded-2xl shadow-md hover:shadow-xl border border-gray-100 dark:border-gray-600 overflow-hidden p-8 transition-transform hover:-translate-y-2" data-aos="fade-up" data-aos-delay="200">
+        <h3 class="text-xl md:text-2xl font-bold text-[#0D2145] dark:text-white mb-2">July 2012 — NePCM Papers Presented at ASME Conference</h3>
+        <p class="text-gray-700 dark:text-gray-200 mb-2 leading-relaxed">
+          NePCM papers authored by Mahmoud Moeini Sedeh, Yousef El Hasadi, and Mahdi Nabil were presented at ASME 2012 in Puerto Rico. Dr. Liwu Fan also shared work from Zhejiang University.
+        </p>
+        <p class="text-sm text-gray-500 dark:text-gray-400">Posted: Oct 22, 2012</p>
+      </article>
 
-        <!-- Article 3 -->
-        <article class="bg-white shadow-md rounded-lg p-6 hover:shadow-xl transition-shadow">
-            <h2 class="text-2xl font-semibold mb-2">July 2012 - NePCM Papers Presented at ASME Summer HT Conference</h2>
-            <p class="mb-3">Three NePCM papers authored by Auburn PhD candidates Mahmoud Moeini Sedeh, Yousef El Hasadi and Mahdi Nabil, were presented at the ASME 2012 Summer Heat Transfer Conference, July 8-12, Puerto Rico, USA. Dr. Liwu Fan also made a presentation based on research conducted at Zhejiang University.</p>
-            <p class="text-sm text-gray-500">Posted: Mon, 22 Oct 2012 15:41:33 | Updated: Mon, 22 Oct 2012 15:44:47</p>
-        </article>
+      <article class="bg-white dark:bg-[#1B3358] rounded-2xl shadow-md hover:shadow-xl border border-gray-100 dark:border-gray-600 overflow-hidden p-8 transition-transform hover:-translate-y-2" data-aos="fade-up" data-aos-delay="300">
+        <h3 class="text-xl md:text-2xl font-bold text-[#0D2145] dark:text-white mb-2">August 2012 — Prof. Yi Zhang Joins NePCM Group</h3>
+        <p class="text-gray-700 dark:text-gray-200 mb-2 leading-relaxed">
+          Prof. Yi Zhang of Nanjing Normal University joined Auburn's NePCM group as a visiting scholar. He will conduct PCM research for one year, bringing valuable expertise in phase change systems.
+        </p>
+        <p class="text-sm text-gray-500 dark:text-gray-400">Posted: Oct 22, 2012</p>
+      </article>
+    </div>
+  </main>
 
-        <!-- Article 4 -->
-        <article class="bg-white shadow-md rounded-lg p-6 hover:shadow-xl transition-shadow">
-            <h2 class="text-2xl font-semibold mb-2">August 2012 - Visiting Scholar (Prof. Yi ZHANG) joins Auburn's NePCM Group</h2>
-            <p class="mb-3">Professor Yi ZHANG of Nanjing Normal University joined Auburn's NePCM group. He has both theoretical and experimental background with phase change systems and will conduct PCM research for one year as a visiting scholar.</p>
-            <p class="text-sm text-gray-500">Posted: Mon, 22 Oct 2012 15:54:07 | Updated: N/A</p>
-        </article>
+  <!-- FOOTER -->
+  <footer class="bg-gray-100 dark:bg-[#0D2145] border-t border-gray-200 dark:border-gray-700 py-6 text-center text-sm text-gray-500 dark:text-gray-300">
+    © 2025 EvoAU — Electric Vehicle Optimization @ Auburn University
+  </footer>
 
-    </main>
+  <!-- JS -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    // AOS
+    AOS.init({ duration: 800, once: true });
 
+    // Fade-in on scroll
+    const elements = document.querySelectorAll(".fade-in");
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) entry.target.classList.add("visible");
+      });
+    });
+    elements.forEach((el) => observer.observe(el));
+
+    // Mobile menu
+    document.getElementById("menu-btn").onclick = () =>
+      document.getElementById("mobile-menu").classList.toggle("hidden");
+
+    // Dark mode
+    const btn = document.getElementById("theme-toggle");
+    btn.addEventListener("click", () => {
+      document.documentElement.classList.toggle("dark");
+    });
+  </script>
 </body>
 </html>

@@ -1,77 +1,170 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EvoAU Publications</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EvoAU Publications</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+  <style>
+    @keyframes gradientMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    .animated-overlay {
+      background: linear-gradient(270deg, rgba(13,33,69,0.7), rgba(232,119,0,0.6));
+      background-size: 400% 400%;
+      animation: gradientMove 12s ease infinite;
+    }
+    .fade-in { opacity: 0; transform: translateY(20px); transition: all 0.8s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+    .underline-animate::after {
+      content: "";
+      display: block;
+      width: 0;
+      height: 3px;
+      background: #e87700;
+      transition: width 0.4s;
+      margin-top: 4px;
+    }
+    .underline-animate:hover::after { width: 100%; }
+  </style>
 </head>
-<body class="bg-gray-50 text-gray-800 font-sans">
+<body class="font-sans text-gray-800 bg-white dark:bg-[#0D2145] dark:text-gray-100">
 
-<!-- Navigation Bar -->
-<nav class="bg-[#1A2B5C] text-white">
-    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-        <!-- Logo -->
+  <!-- NAVBAR -->
+  <header class="w-full backdrop-blur-md bg-white/70 dark:bg-[#0D2145]/70 shadow-sm fixed top-0 left-0 z-50 border-b border-white/40">
+    <div class="max-w-7xl mx-auto flex items-center justify-between px-6 py-3">
+      <!-- Logo -->
+      <div class="flex items-center space-x-3">
         <a href="index.html" class="flex items-center space-x-2">
-            <img src="logo.png" alt="EvoAU Logo" class="h-10 w-auto" />
-            <div>
-                <h1 class="text-xl font-bold leading-none">EvoAU</h1>
-                <p class="text-xs text-gray-200 leading-none">Electric Vehicle Optimization @ Auburn University</p>
-            </div>
+          <img src="logo.png" alt="EvoAU Logo" class="h-10 w-auto" />
+          <div>
+            <h1 class="text-lg font-semibold text-[#0D2145] dark:text-white leading-none">EvoAU</h1>
+            <p class="text-xs text-gray-500 dark:text-gray-300 leading-none">Electric Vehicle Optimization @ Auburn University</p>
+          </div>
         </a>
+      </div>
 
-        <!-- Nav Links -->
-        <div class="space-x-6">
-            <a href="index.html" class="hover:underline">Home</a>
-            <a href="personnel.html" class="hover:underline">Personnel</a>
-            <a href="news.html" class="hover:underline font-semibold">News</a>
-            <a href="research.html" class="hover:underline">Research</a>
-            <a href="contact.html" class="hover:underline">Contact</a>
-        </div>
+      <!-- Navigation -->
+      <nav class="hidden md:flex space-x-6 text-sm font-medium">
+        <a href="index.html" class="hover:text-[#E87700] transition">Home</a>
+        <a href="personnel.html" class="hover:text-[#E87700] transition">Personnel</a>
+        <a href="news.html" class="hover:text-[#E87700] transition">News</a>
+        <a href="research.html" class="text-[#E87700] font-semibold">Research</a>
+        <a href="contact.html" class="hover:text-[#E87700] transition">Contact</a>
+      </nav>
+
+      <!-- Dark Mode + Mobile Toggle -->
+      <div class="flex items-center space-x-4">
+        <button id="theme-toggle" class="p-2 rounded-full bg-gray-200 dark:bg-gray-700">
+          <svg id="moon" class="w-5 h-5 block dark:hidden text-gray-800" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z" />
+          </svg>
+          <svg id="sun" class="w-5 h-5 hidden dark:block text-yellow-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m8.66-8.66h1M4.34 12H3m15.36 6.36l.7.7M5.64 5.64l-.7-.7m12.02 0l.7-.7M5.64 18.36l-.7.7M12 8a4 4 0 100 8 4 4 0 000-8z"/>
+          </svg>
+        </button>
+        <button id="menu-btn" class="md:hidden flex flex-col space-y-1">
+          <span class="w-6 h-0.5 bg-gray-700 dark:bg-gray-100"></span>
+          <span class="w-6 h-0.5 bg-gray-700 dark:bg-gray-100"></span>
+          <span class="w-6 h-0.5 bg-gray-700 dark:bg-gray-100"></span>
+        </button>
+      </div>
     </div>
-</nav>
 
+    <!-- Mobile Nav -->
+    <nav id="mobile-menu" class="hidden flex-col absolute bg-white dark:bg-[#0D2145] w-full top-full left-0 shadow-md md:hidden">
+      <a href="index.html" class="py-3 px-6 border-b hover:bg-gray-50 dark:hover:bg-gray-800">Home</a>
+      <a href="personnel.html" class="py-3 px-6 border-b hover:bg-gray-50 dark:hover:bg-gray-800">Personnel</a>
+      <a href="news.html" class="py-3 px-6 border-b hover:bg-gray-50 dark:hover:bg-gray-800">News</a>
+      <a href="research.html" class="py-3 px-6 border-b hover:bg-gray-50 dark:hover:bg-gray-800">Research</a>
+      <a href="contact.html" class="py-3 px-6 hover:bg-gray-50 dark:hover:bg-gray-800">Contact</a>
+    </nav>
+  </header>
 
-    <!-- Hero Section -->
-    <header class="bg-[#1A2B5C] text-white py-16">
-        <div class="max-w-5xl mx-auto px-6 text-center">
-            <h1 class="text-4xl md:text-5xl font-bold mb-4">EvoAU Publications</h1>
-            <p class="text-lg md:text-xl">Recent research articles, projects, and datasets from our team</p>
-        </div>
-    </header>
+  <!-- HERO -->
+  <section class="relative mt-16">
+    <div class="relative w-full h-72 md:h-96 bg-fixed bg-center bg-cover" style="background-image: url('banner-research.jpg');">
+      <div class="absolute inset-0 animated-overlay"></div>
+      <div class="absolute inset-0 flex flex-col justify-center items-center text-center text-white px-6">
+        <h2 class="text-3xl md:text-5xl font-bold uppercase tracking-wide drop-shadow-lg fade-in" data-aos="fade-up">EvoAU Publications</h2>
+        <p class="mt-4 max-w-2xl text-base md:text-lg leading-relaxed text-gray-200 fade-in" data-aos="fade-up" data-aos-delay="200">
+          Explore recent research articles, projects, and datasets from our team.
+        </p>
+      </div>
+    </div>
+  </section>
 
-    <!-- Publications Section -->
-    <main class="max-w-5xl mx-auto px-6 py-12 space-y-8">
+  <!-- PUBLICATIONS GRID -->
+  <main class="max-w-6xl mx-auto px-6 py-16">
+    <h2 class="text-2xl md:text-3xl font-bold text-[#E87700] mb-12 underline-animate text-center">// Recent Publications & Projects</h2>
+    <div class="grid md:grid-cols-2 gap-10 fade-in">
+      <!-- Publication Cards -->
+      <article class="bg-white dark:bg-[#1B3358] rounded-2xl shadow-md hover:shadow-xl border border-gray-100 dark:border-gray-600 overflow-hidden p-8 transition-transform hover:-translate-y-2" data-aos="fade-up">
+        <h3 class="text-xl md:text-2xl font-bold text-[#0D2145] dark:text-white mb-2">Publication Title 1</h3>
+        <p class="text-gray-700 dark:text-gray-200 mb-3 leading-relaxed">
+          A brief description of the publication, summarizing the research, methods, and findings.
+        </p>
+        <a href="#" class="text-[#E87700] hover:underline font-medium">Read full paper</a>
+      </article>
 
-        <!-- Publication 1 -->
-        <article class="bg-white shadow-md rounded-lg p-6 hover:shadow-xl transition-shadow">
-            <h2 class="text-2xl font-semibold mb-2 text-[#D46A1F]">Publication Title 1</h2>
-            <p class="mb-3 text-gray-700">A brief description of the publication, summarizing the research, methods, and findings.</p>
-            <a href="#" class="text-blue-600 hover:underline">Read full paper</a>
-        </article>
+      <article class="bg-white dark:bg-[#1B3358] rounded-2xl shadow-md hover:shadow-xl border border-gray-100 dark:border-gray-600 overflow-hidden p-8 transition-transform hover:-translate-y-2" data-aos="fade-up" data-aos-delay="100">
+        <h3 class="text-xl md:text-2xl font-bold text-[#0D2145] dark:text-white mb-2">Publication Title 2</h3>
+        <p class="text-gray-700 dark:text-gray-200 mb-3 leading-relaxed">
+          Summary of this publication, including the main results and significance in the field.
+        </p>
+        <a href="#" class="text-[#E87700] hover:underline font-medium">Read full paper</a>
+      </article>
 
-        <!-- Publication 2 -->
-        <article class="bg-white shadow-md rounded-lg p-6 hover:shadow-xl transition-shadow">
-            <h2 class="text-2xl font-semibold mb-2 text-[#D46A1F]">Publication Title 2</h2>
-            <p class="mb-3 text-gray-700">Summary of this publication, including the main results and significance in the field.</p>
-            <a href="#" class="text-blue-600 hover:underline">Read full paper</a>
-        </article>
+      <article class="bg-white dark:bg-[#1B3358] rounded-2xl shadow-md hover:shadow-xl border border-gray-100 dark:border-gray-600 overflow-hidden p-8 transition-transform hover:-translate-y-2" data-aos="fade-up" data-aos-delay="200">
+        <h3 class="text-xl md:text-2xl font-bold text-[#0D2145] dark:text-white mb-2">Project Website / Dataset</h3>
+        <p class="text-gray-700 dark:text-gray-200 mb-3 leading-relaxed">
+          A short description of the dataset or project website, what it contains, and how it can be used.
+        </p>
+        <a href="#" class="text-[#E87700] hover:underline font-medium">Visit project</a>
+      </article>
 
-        <!-- Publication 3 -->
-        <article class="bg-white shadow-md rounded-lg p-6 hover:shadow-xl transition-shadow">
-            <h2 class="text-2xl font-semibold mb-2 text-[#D46A1F]">Project Website / Dataset</h2>
-            <p class="mb-3 text-gray-700">A short description of the dataset or project website, what it contains, and how it can be used.</p>
-            <a href="#" class="text-blue-600 hover:underline">Visit project</a>
-        </article>
+      <article class="bg-white dark:bg-[#1B3358] rounded-2xl shadow-md hover:shadow-xl border border-gray-100 dark:border-gray-600 overflow-hidden p-8 transition-transform hover:-translate-y-2" data-aos="fade-up" data-aos-delay="300">
+        <h3 class="text-xl md:text-2xl font-bold text-[#0D2145] dark:text-white mb-2">Publication Title 4</h3>
+        <p class="text-gray-700 dark:text-gray-200 mb-3 leading-relaxed">
+          Additional publication description or notes about significance.
+        </p>
+        <a href="#" class="text-[#E87700] hover:underline font-medium">Read full paper</a>
+      </article>
+    </div>
+  </main>
 
-        <!-- Publication 4 (example of another) -->
-        <article class="bg-white shadow-md rounded-lg p-6 hover:shadow-xl transition-shadow">
-            <h2 class="text-2xl font-semibold mb-2 text-[#D46A1F]">Publication Title 4</h2>
-            <p class="mb-3 text-gray-700">Additional publication description or notes about significance.</p>
-            <a href="#" class="text-blue-600 hover:underline">Read full paper</a>
-        </article>
+  <!-- FOOTER -->
+  <footer class="bg-gray-100 dark:bg-[#0D2145] border-t border-gray-200 dark:border-gray-700 py-6 text-center text-sm text-gray-500 dark:text-gray-300">
+    © 2025 EvoAU — Electric Vehicle Optimization @ Auburn University
+  </footer>
 
-    </main>
+  <!-- JS -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    // AOS
+    AOS.init({ duration: 800, once: true });
 
+    // Fade-in on scroll
+    const elements = document.querySelectorAll(".fade-in");
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) entry.target.classList.add("visible");
+      });
+    });
+    elements.forEach((el) => observer.observe(el));
+
+    // Mobile menu
+    document.getElementById("menu-btn").onclick = () =>
+      document.getElementById("mobile-menu").classList.toggle("hidden");
+
+    // Dark mode
+    const btn = document.getElementById("theme-toggle");
+    btn.addEventListener("click", () => {
+      document.documentElement.classList.toggle("dark");
+    });
+  </script>
 </body>
 </html>
