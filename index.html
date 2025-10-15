@@ -1,28 +1,72 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>EvoAU | Electric Vehicle Optimization @ Auburn University</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
     <style>
-      html {
-        scroll-behavior: smooth;
+      @keyframes gradientMove {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+
+      .animated-overlay {
+        background: linear-gradient(270deg, rgba(13, 33, 69, 0.7), rgba(232, 119, 0, 0.6));
+        background-size: 400% 400%;
+        animation: gradientMove 12s ease infinite;
+      }
+
+      .underline-animate::after {
+        content: "";
+        display: block;
+        width: 0;
+        height: 3px;
+        background: #e87700;
+        transition: width 0.4s;
+        margin-top: 4px;
+      }
+
+      .underline-animate:hover::after {
+        width: 100%;
+      }
+
+      .fade-in {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: all 0.8s ease;
+      }
+
+      .fade-in.visible {
+        opacity: 1;
+        transform: translateY(0);
       }
     </style>
   </head>
 
-  <body class="font-sans text-gray-800 bg-white">
+  <body class="font-sans text-gray-800 bg-white dark:bg-[#0D2145] dark:text-gray-100">
     <!-- NAVBAR -->
-    <header class="w-full bg-white/95 backdrop-blur shadow-sm fixed top-0 left-0 z-50">
+    <header
+      class="w-full backdrop-blur-md bg-white/70 dark:bg-[#0D2145]/70 shadow-sm fixed top-0 left-0 z-50 border-b border-white/40"
+    >
       <div class="max-w-7xl mx-auto flex items-center justify-between px-6 py-3">
         <!-- Logo -->
         <div class="flex items-center space-x-3">
           <a href="index.html" class="flex items-center space-x-2">
             <img src="logo.png" alt="EvoAU Logo" class="h-10 w-auto" />
             <div>
-              <h1 class="text-lg font-semibold text-[#0D2145] leading-none">EvoAU</h1>
-              <p class="text-xs text-gray-500 leading-none">
+              <h1 class="text-lg font-semibold text-[#0D2145] dark:text-white leading-none">
+                EvoAU
+              </h1>
+              <p class="text-xs text-gray-500 dark:text-gray-300 leading-none">
                 Electric Vehicle Optimization @ Auburn University
               </p>
             </div>
@@ -34,30 +78,82 @@
           <a href="personnel.html" class="hover:text-[#E87700] transition">Personnel</a>
           <a href="news.html" class="hover:text-[#E87700] transition">News</a>
           <a href="research.html" class="hover:text-[#E87700] transition">Research</a>
-          <a href="contact.html" class="hover:underline">Contact</a>
+          <a href="contact.html" class="hover:text-[#E87700] transition">Contact</a>
         </nav>
+
+        <!-- Dark Mode + Mobile Toggle -->
+        <div class="flex items-center space-x-4">
+          <!-- Dark Mode -->
+          <button id="theme-toggle" class="p-2 rounded-full bg-gray-200 dark:bg-gray-700">
+            <svg
+              id="moon"
+              class="w-5 h-5 block dark:hidden text-gray-800"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z"
+              />
+            </svg>
+            <svg
+              id="sun"
+              class="w-5 h-5 hidden dark:block text-yellow-400"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M12 3v1m0 16v1m8.66-8.66h1M4.34 12H3m15.36 6.36l.7.7M5.64 5.64l-.7-.7m12.02 0l.7-.7M5.64 18.36l-.7.7M12 8a4 4 0 100 8 4 4 0 000-8z"
+              />
+            </svg>
+          </button>
+
+          <!-- Hamburger -->
+          <button id="menu-btn" class="md:hidden flex flex-col space-y-1">
+            <span class="w-6 h-0.5 bg-gray-700 dark:bg-gray-100"></span>
+            <span class="w-6 h-0.5 bg-gray-700 dark:bg-gray-100"></span>
+            <span class="w-6 h-0.5 bg-gray-700 dark:bg-gray-100"></span>
+          </button>
+        </div>
       </div>
+
+      <!-- Mobile Nav -->
+      <nav
+        id="mobile-menu"
+        class="hidden flex-col absolute bg-white dark:bg-[#0D2145] w-full top-full left-0 shadow-md md:hidden"
+      >
+        <a href="personnel.html" class="py-3 px-6 border-b hover:bg-gray-50 dark:hover:bg-gray-800">Personnel</a>
+        <a href="news.html" class="py-3 px-6 border-b hover:bg-gray-50 dark:hover:bg-gray-800">News</a>
+        <a href="research.html" class="py-3 px-6 border-b hover:bg-gray-50 dark:hover:bg-gray-800">Research</a>
+        <a href="contact.html" class="py-3 px-6 hover:bg-gray-50 dark:hover:bg-gray-800">Contact</a>
+      </nav>
     </header>
 
     <!-- HERO -->
     <section id="top" class="relative mt-16">
-      <div class="relative w-full h-[70vh] overflow-hidden">
-        <img
-          src="banner.png"
-          class="absolute inset-0 w-full h-full object-cover"
-          alt="EvoAU Banner"
-        />
-        <!-- Overlay -->
-        <div class="absolute inset-0 bg-[#0D2145]/60"></div>
-
-        <!-- Text overlay -->
+      <div
+        class="relative w-full h-[70vh] bg-fixed bg-center bg-cover"
+        style="background-image: url('banner.png');"
+      >
+        <div class="absolute inset-0 animated-overlay"></div>
         <div
           class="absolute inset-0 flex flex-col justify-center items-center text-center text-white px-6"
         >
-          <h2 class="text-3xl md:text-4xl font-bold uppercase tracking-wide">
+          <h2 class="text-3xl md:text-5xl font-bold uppercase tracking-wide drop-shadow-lg" data-aos="fade-up">
             Electric Vehicle Optimization
           </h2>
-          <p class="mt-4 max-w-2xl text-base md:text-lg leading-relaxed text-gray-200">
+          <p
+            class="mt-4 max-w-2xl text-base md:text-lg leading-relaxed text-gray-200"
+            data-aos="fade-up"
+            data-aos-delay="200"
+          >
             Advancing electric vehicle systems through AI, CFD modeling, and
             experimental validation to enhance performance, efficiency, and
             sustainability.
@@ -67,9 +163,9 @@
     </section>
 
     <!-- ABOUT -->
-    <section id="about" class="max-w-6xl mx-auto px-6 py-16">
-      <h2 class="text-2xl font-bold text-[#E87700] mb-6">// WHAT IS EVOAU?</h2>
-      <p class="text-gray-700 leading-relaxed text-justify">
+    <section id="about" class="max-w-6xl mx-auto px-6 py-16 fade-in">
+      <h2 class="text-2xl font-bold text-[#E87700] mb-6 underline-animate">// WHAT IS EVOAU?</h2>
+      <p class="text-gray-700 dark:text-gray-200 leading-relaxed text-justify">
         EvoAU (Electric Vehicle Optimization @ Auburn University) is a
         multidisciplinary research initiative focused on advancing electric
         vehicle technologies through a systems-level approach. The project
@@ -79,50 +175,47 @@
         and energy systems through intelligent simulation and real-world testing.
       </p>
 
-      <div class="mt-8 rounded-xl overflow-hidden shadow-lg border border-gray-200">
-        <img
-          src="team.jpg"
-          class="w-full object-cover"
-          alt="EvoAU Team"
-        />
+      <div class="mt-8 rounded-xl overflow-hidden shadow-lg border border-gray-200 dark:border-gray-700">
+        <img src="team.jpg" class="w-full object-cover" alt="EvoAU Team" />
       </div>
     </section>
 
     <!-- MISSION -->
-    <section id="mission" class="max-w-6xl mx-auto px-6 py-16 border-t border-gray-200">
-    <h2 class="text-2xl font-bold text-[#E87700] mb-6">// OUR MISSION</h2>
-    <p class="text-gray-700 leading-relaxed mb-8 text-justify">
+    <section id="mission" class="max-w-6xl mx-auto px-6 py-16 border-t border-gray-200 dark:border-gray-700 fade-in">
+      <h2 class="text-2xl font-bold text-[#E87700] mb-6 underline-animate">// OUR MISSION</h2>
+      <p class="text-gray-700 dark:text-gray-200 leading-relaxed mb-8 text-justify">
         Our mission is to accelerate the development of advanced electric vehicle
         systems by transforming how energy management and battery thermal systems
         are modeled, tested, and optimized. EvoAU leverages advanced CFD
         simulation, AI-based anomaly detection, and reinforcement learning to
         create adaptive, intelligent energy management frameworks for real-world
         EV applications.
-    </p>
+      </p>
 
-    <div class="rounded-xl overflow-hidden shadow-lg border border-gray-200">
+      <div class="rounded-xl overflow-hidden shadow-lg border border-gray-200 dark:border-gray-700">
         <iframe
-        src="challenge.pdf"
-        class="w-full h-96"
-        style="height: 80vh; min-height: 600px; border:none;"
+          src="challenge.pdf"
+          class="w-full h-[60vh] md:h-[80vh] border-none"
         ></iframe>
-    </div>
+      </div>
     </section>
 
-
     <!-- RESEARCH AREAS -->
-    <section id="research" class="bg-gray-50 py-16 border-t border-gray-200">
+    <section id="research" class="bg-gray-50 dark:bg-[#10264d] py-16 border-t border-gray-200 dark:border-gray-700 fade-in">
       <div class="max-w-6xl mx-auto px-6">
-        <h2 class="text-2xl font-bold text-[#E87700] mb-10 text-center">
+        <h2 class="text-2xl font-bold text-[#E87700] mb-10 text-center underline-animate">
           // RESEARCH AREAS
         </h2>
 
         <div class="grid md:grid-cols-3 gap-8">
-          <div class="bg-white p-8 rounded-xl shadow-sm border border-gray-100">
-            <h3 class="font-bold text-lg text-[#0D2145] mb-3">
+          <div
+            class="bg-white dark:bg-[#1B3358] p-8 rounded-xl shadow-md border border-gray-100 dark:border-gray-600 transition-transform duration-300 hover:-translate-y-2 hover:shadow-xl"
+            data-aos="fade-up"
+          >
+            <h3 class="font-bold text-lg text-[#0D2145] dark:text-white mb-3">
               CFD & Thermal Systems
             </h3>
-            <ul class="list-disc list-inside text-gray-700 space-y-2 text-sm">
+            <ul class="list-disc list-inside text-gray-700 dark:text-gray-200 space-y-2 text-sm">
               <li>Phase Change Material modeling</li>
               <li>Ansys Fluent simulations</li>
               <li>BTMS configuration testing</li>
@@ -130,20 +223,28 @@
             </ul>
           </div>
 
-          <div class="bg-white p-8 rounded-xl shadow-sm border border-gray-100">
-            <h3 class="font-bold text-lg text-[#0D2145] mb-3">
+          <div
+            class="bg-white dark:bg-[#1B3358] p-8 rounded-xl shadow-md border border-gray-100 dark:border-gray-600 transition-transform duration-300 hover:-translate-y-2 hover:shadow-xl"
+            data-aos="fade-up"
+            data-aos-delay="100"
+          >
+            <h3 class="font-bold text-lg text-[#0D2145] dark:text-white mb-3">
               Hardware & Experimentation
             </h3>
-            <ul class="list-disc list-inside text-gray-700 space-y-2 text-sm">
+            <ul class="list-disc list-inside text-gray-700 dark:text-gray-200 space-y-2 text-sm">
               <li>Temperature sensing & data acquisition</li>
               <li>Battery setup & validation rigs</li>
               <li>Experimental BTMS verification</li>
             </ul>
           </div>
 
-          <div class="bg-white p-8 rounded-xl shadow-sm border border-gray-100">
-            <h3 class="font-bold text-lg text-[#0D2145] mb-3">AI & Optimization</h3>
-            <ul class="list-disc list-inside text-gray-700 space-y-2 text-sm">
+          <div
+            class="bg-white dark:bg-[#1B3358] p-8 rounded-xl shadow-md border border-gray-100 dark:border-gray-600 transition-transform duration-300 hover:-translate-y-2 hover:shadow-xl"
+            data-aos="fade-up"
+            data-aos-delay="200"
+          >
+            <h3 class="font-bold text-lg text-[#0D2145] dark:text-white mb-3">AI & Optimization</h3>
+            <ul class="list-disc list-inside text-gray-700 dark:text-gray-200 space-y-2 text-sm">
               <li>Machine learning pipelines</li>
               <li>Anomaly detection</li>
               <li>Reinforcement learning control</li>
@@ -155,25 +256,51 @@
     </section>
 
     <!-- CONTACT -->
-    <section id="contact" class="max-w-6xl mx-auto px-6 py-20 text-center">
-      <h2 class="text-2xl font-bold text-[#E87700] mb-6">// CONTACT US</h2>
-      <p class="text-gray-700 mb-8 max-w-2xl mx-auto leading-relaxed">
+    <section id="contact" class="max-w-6xl mx-auto px-6 py-20 text-center fade-in">
+      <h2 class="text-2xl font-bold text-[#E87700] mb-6 underline-animate">// CONTACT US</h2>
+      <p class="text-gray-700 dark:text-gray-200 mb-8 max-w-2xl mx-auto leading-relaxed">
         Interested in collaborating, sponsoring, or joining EvoAU? We welcome
         students, faculty, and industry partners to work with us toward a cleaner,
         smarter electric future.
       </p>
 
       <a
-        href="mailto:evoau@auburn.edu"
-        class="inline-block bg-[#0D2145] text-white px-8 py-3 rounded-md font-semibold hover:bg-[#E87700] transition"
+        href="contact.html"
+        class="inline-block bg-[#0D2145] text-white dark:bg-[#E87700] dark:text-black px-8 py-3 rounded-md font-semibold hover:bg-[#E87700] hover:text-black transition"
       >
-        Email Us
+        Contact Us
       </a>
     </section>
 
     <!-- FOOTER -->
-    <footer class="bg-gray-100 border-t border-gray-200 py-6 text-center text-sm text-gray-500">
+    <footer class="bg-gray-100 dark:bg-[#0D2145] border-t border-gray-200 dark:border-gray-700 py-6 text-center text-sm text-gray-500 dark:text-gray-300">
       © 2025 EvoAU — Electric Vehicle Optimization @ Auburn University
     </footer>
+
+    <!-- JS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      // AOS
+      AOS.init({ duration: 800, once: true });
+
+      // Fade-in on scroll
+      const elements = document.querySelectorAll(".fade-in");
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) entry.target.classList.add("visible");
+        });
+      });
+      elements.forEach((el) => observer.observe(el));
+
+      // Mobile menu
+      document.getElementById("menu-btn").onclick = () =>
+        document.getElementById("mobile-menu").classList.toggle("hidden");
+
+      // Dark mode
+      const btn = document.getElementById("theme-toggle");
+      btn.addEventListener("click", () => {
+        document.documentElement.classList.toggle("dark");
+      });
+    </script>
   </body>
 </html>
