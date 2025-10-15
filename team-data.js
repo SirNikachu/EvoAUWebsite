@@ -162,7 +162,7 @@ const teamData = [
     name: "Nikith Kandula",
     role: "Artificial Intelligence",
     university: "Auburn University, Engineering",
-    photo: "https://eng.auburn.edu/images/image-not-available.jpg",
+    photo: "headshots/Kandula.jpeg",
     email: "nzk0064@auburn.edu",
     phone: "",
     website: "https://www.linkedin.com/in/nik-kandula/",

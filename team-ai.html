@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI & Controls Team | EvoAU</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script> tailwind.config = { darkMode: 'class' } </script>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+
+  <style>
+    @keyframes gradientMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    .animated-overlay {
+      background: linear-gradient(270deg, rgba(13,33,69,0.7), rgba(232,119,0,0.6));
+      background-size: 400% 400%;
+      animation: gradientMove 12s ease infinite;
+    }
+  </style>
+</head>
+
+<body class="font-sans text-gray-800 bg-white dark:bg-[#0D2145] dark:text-gray-100 transition-colors duration-500">
+
+  <!-- NAVBAR -->
+  <header class="w-full backdrop-blur-md bg-white/70 dark:bg-[#0D2145]/70 shadow-sm fixed top-0 left-0 z-50 border-b border-white/40">
+    <div class="max-w-7xl mx-auto flex items-center justify-between px-6 py-3">
+      <a href="index.html" class="flex items-center space-x-2">
+        <img src="logo.png" alt="EvoAU Logo" class="h-10 w-auto" />
+        <div>
+          <h1 class="text-lg font-semibold text-[#0D2145] dark:text-white leading-none">EvoAU</h1>
+          <p class="text-xs text-gray-500 dark:text-gray-300 leading-none">Electric Vehicle Optimization @ Auburn University</p>
+        </div>
+      </a>
+
+      <nav class="hidden md:flex space-x-6 text-sm font-medium">
+        <a href="index.html" class="hover:text-[#E87700] transition">Home</a>
+        <a href="personnel.html" class="hover:text-[#E87700] transition">Personnel</a>
+        <a href="news.html" class="hover:text-[#E87700] transition">News</a>
+        <a href="research.html" class="hover:text-[#E87700] transition">Research</a>
+        <a href="teams.html" class="text-[#E87700] font-semibold">Teams</a>
+        <a href="contact.html" class="hover:text-[#E87700] transition">Contact</a>
+      </nav>
+
+      <button id="theme-toggle" class="p-2 rounded-full bg-gray-200 dark:bg-gray-700 transition">
+        <svg id="moon" class="w-5 h-5 block dark:hidden text-gray-800" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z" />
+        </svg>
+        <svg id="sun" class="w-5 h-5 hidden dark:block text-yellow-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m8.66-8.66h1M4.34 12H3m15.36 6.36l.7.7M5.64 5.64l-.7-.7m12.02 0l.7-.7M5.64 18.36l-.7.7M12 8a4 4 0 100 8 4 4 0 000-8z"/>
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="relative mt-16">
+    <div class="relative w-full h-72 md:h-96 bg-center bg-cover" style="background-image: url('ai-banner.jpg');">
+      <div class="absolute inset-0 animated-overlay"></div>
+      <div class="absolute inset-0 flex flex-col justify-center items-center text-center text-white px-6">
+        <h2 class="text-3xl md:text-5xl font-bold uppercase tracking-wide">AI & Controls Team</h2>
+        <p class="mt-4 max-w-2xl text-base md:text-lg text-gray-200">
+          Designing intelligent vehicle control systems for optimal performance.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- MAIN CONTENT -->
+  <main class="max-w-6xl mx-auto px-6 py-16 space-y-16">
+    <section data-aos="fade-up">
+      <h3 class="text-3xl font-bold text-[#E87700] mb-4">Mission</h3>
+      <p class="text-gray-700 dark:text-gray-200 leading-relaxed">
+        The AI & Controls Team develops advanced algorithms for autonomous and semi-autonomous vehicle control. Their work enables precise energy management, driver-assist functionalities, and system reliability in real-world conditions.
+      </p>
+    </section>
+
+    <section data-aos="fade-up">
+      <h3 class="text-3xl font-bold text-[#E87700] mb-4">Core Focus Areas</h3>
+      <ul class="grid md:grid-cols-2 gap-6 text-gray-700 dark:text-gray-200">
+        <li class="p-4 bg-gray-50 dark:bg-gray-800 rounded-xl shadow-sm">🤖 Autonomous control algorithms</li>
+        <li class="p-4 bg-gray-50 dark:bg-gray-800 rounded-xl shadow-sm">⚡ Energy management and efficiency</li>
+        <li class="p-4 bg-gray-50 dark:bg-gray-800 rounded-xl shadow-sm">📡 Sensor fusion and data processing</li>
+        <li class="p-4 bg-gray-50 dark:bg-gray-800 rounded-xl shadow-sm">📝 Testing, validation, and performance tuning</li>
+      </ul>
+    </section>
+
+    <!-- Gallery -->
+    <section data-aos="fade-up">
+      <h3 class="text-3xl font-bold text-[#E87700] mb-6">Gallery</h3>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+        <img src="https://www.shutterstock.com/image-vector/basic-car-boxy-shape-large-600nw-2609774475.jpg" class="rounded-xl shadow-md" alt="AI project 1" />
+        <img src="https://www.shutterstock.com/image-vector/basic-car-boxy-shape-large-600nw-2609774475.jpg" class="rounded-xl shadow-md" alt="AI project 2" />
+        <img src="https://www.shutterstock.com/image-vector/basic-car-boxy-shape-large-600nw-2609774475.jpg" class="rounded-xl shadow-md" alt="AI project 3" />
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-gray-100 dark:bg-[#0D2145] border-t border-gray-200 dark:border-gray-700 py-6 text-center text-sm text-gray-500 dark:text-gray-300">
+    © 2025 EvoAU — Electric Vehicle Optimization @ Auburn University
+  </footer>
+
+  <!-- JS -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration: 800, once: true });
+    const themeToggle = document.getElementById("theme-toggle");
+    const htmlEl = document.documentElement;
+    const savedTheme = localStorage.getItem("theme");
+    const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if (savedTheme === "dark" || (!savedTheme && systemDark)) htmlEl.classList.add("dark");
+    themeToggle.addEventListener("click", () => {
+      htmlEl.classList.toggle("dark");
+      localStorage.setItem("theme", htmlEl.classList.contains("dark") ? "dark" : "light");
+    });
+  </script>
+</body>
+</html>

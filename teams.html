@@ -3,16 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contact | EvoAU</title>
+  <title>Teams | EvoAU</title>
   
-  <!-- Tailwind -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
-    tailwind.config = {
-      darkMode: 'class',
-    }
+    tailwind.config = { darkMode: 'class' }
   </script>
-  
+
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
   <style>
     @keyframes gradientMove {
@@ -39,12 +36,12 @@
     .underline-animate:hover::after { width: 100%; }
   </style>
 </head>
+
 <body class="font-sans text-gray-800 bg-white dark:bg-[#0D2145] dark:text-gray-100 transition-colors duration-500">
 
   <!-- NAVBAR -->
   <header class="w-full backdrop-blur-md bg-white/70 dark:bg-[#0D2145]/70 shadow-sm fixed top-0 left-0 z-50 border-b border-white/40">
     <div class="max-w-7xl mx-auto flex items-center justify-between px-6 py-3">
-      <!-- Logo -->
       <div class="flex items-center space-x-3">
         <a href="index.html" class="flex items-center space-x-2">
           <img src="logo.png" alt="EvoAU Logo" class="h-10 w-auto" />
@@ -55,17 +52,15 @@
         </a>
       </div>
 
-      <!-- Navigation -->
       <nav class="hidden md:flex space-x-6 text-sm font-medium">
         <a href="index.html" class="hover:text-[#E87700] transition">Home</a>
         <a href="personnel.html" class="hover:text-[#E87700] transition">Personnel</a>
         <a href="news.html" class="hover:text-[#E87700] transition">News</a>
         <a href="research.html" class="hover:text-[#E87700] transition">Research</a>
-        <a href="teams.html" class="hover:text-[#E87700] transition">Teams</a>
-        <a href="contact.html" class="text-[#E87700] font-semibold">Contact</a>
+        <a href="teams.html" class="text-[#E87700] font-semibold">Teams</a>
+        <a href="contact.html" class="hover:text-[#E87700] transition">Contact</a>
       </nav>
 
-      <!-- Dark Mode + Mobile Toggle -->
       <div class="flex items-center space-x-4">
         <button id="theme-toggle" class="p-2 rounded-full bg-gray-200 dark:bg-gray-700 transition">
           <svg id="moon" class="w-5 h-5 block dark:hidden text-gray-800" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
@@ -83,86 +78,83 @@
       </div>
     </div>
 
-    <!-- Mobile Nav -->
     <nav id="mobile-menu" class="hidden flex-col absolute bg-white dark:bg-[#0D2145] w-full top-full left-0 shadow-md md:hidden">
       <a href="index.html" class="py-3 px-6 border-b hover:bg-gray-50 dark:hover:bg-gray-800">Home</a>
       <a href="personnel.html" class="py-3 px-6 border-b hover:bg-gray-50 dark:hover:bg-gray-800">Personnel</a>
       <a href="news.html" class="py-3 px-6 border-b hover:bg-gray-50 dark:hover:bg-gray-800">News</a>
       <a href="research.html" class="py-3 px-6 border-b hover:bg-gray-50 dark:hover:bg-gray-800">Research</a>
+      <a href="teams.html" class="py-3 px-6 border-b hover:bg-gray-50 dark:hover:bg-gray-800 text-[#E87700]">Teams</a>
       <a href="contact.html" class="py-3 px-6 hover:bg-gray-50 dark:hover:bg-gray-800">Contact</a>
     </nav>
   </header>
 
   <!-- HERO -->
   <section class="relative mt-16">
-    <div class="relative w-full h-72 md:h-96 bg-fixed bg-center bg-cover" style="background-image: url('banner-contact.jpg');">
+    <div class="relative w-full h-72 md:h-96 bg-fixed bg-center bg-cover" style="background-image: url('banner-teams.jpg');">
       <div class="absolute inset-0 animated-overlay"></div>
       <div class="absolute inset-0 flex flex-col justify-center items-center text-center text-white px-6">
-        <h2 class="text-3xl md:text-5xl font-bold uppercase tracking-wide drop-shadow-lg fade-in" data-aos="fade-up">Contact EvoAU</h2>
+        <h2 class="text-3xl md:text-5xl font-bold uppercase tracking-wide drop-shadow-lg fade-in" data-aos="fade-up">Our Teams</h2>
         <p class="mt-4 max-w-2xl text-base md:text-lg leading-relaxed text-gray-200 fade-in" data-aos="fade-up" data-aos-delay="200">
-          Reach out to our team, collaborators, or program partners.
+          Meet the specialized groups driving innovation in the EcoCAR Challenge.
         </p>
       </div>
     </div>
   </section>
 
-  <!-- CONTACT GRID -->
-  <main class="max-w-6xl mx-auto px-6 py-16 space-y-12">
-    <h2 class="text-2xl md:text-3xl font-bold text-[#E87700] mb-12 underline-animate text-center">// Connect With Us</h2>
+  <!-- TEAM SECTIONS -->
+  <main class="max-w-6xl mx-auto px-6 py-16 space-y-24">
 
-    <!-- Contact Info Row -->
-    <div class="grid md:grid-cols-3 gap-10 fade-in">
-      <article class="bg-white dark:bg-[#1B3358] rounded-2xl shadow-md hover:shadow-xl border border-gray-100 dark:border-gray-600 p-8 text-center transition-transform hover:-translate-y-2" data-aos="fade-up">
-        <h3 class="text-xl md:text-2xl font-bold text-[#0D2145] dark:text-white mb-2">Point of Contact</h3>
-        <p class="text-gray-700 dark:text-gray-200 mb-1"><span class="font-semibold">Name:</span> [Insert Name]</p>
-        <p class="text-gray-700 dark:text-gray-200 mb-1"><span class="font-semibold">Phone:</span> (XXX) XXX-XXXX</p>
-        <p class="text-gray-700 dark:text-gray-200 mb-1"><span class="font-semibold">Fax:</span> (XXX) XXX-XXXX</p>
-        <p class="text-gray-700 dark:text-gray-200"><span class="font-semibold">Email:</span> 
-          <a href="mailto:example@university.edu" class="text-[#E87700] hover:underline">example@university.edu</a>
+    <!-- HARDWARE -->
+    <section class="flex flex-col md:flex-row items-center gap-12 fade-in" data-aos="fade-up">
+      <img src="hardware-team.jpg" alt="Hardware Team" class="w-full md:w-1/2 rounded-2xl shadow-lg" />
+      <div class="md:w-1/2 space-y-4">
+        <h3 class="text-3xl font-bold text-[#E87700]">Hardware Team</h3>
+        <p class="text-gray-700 dark:text-gray-200 leading-relaxed">
+          The Hardware Team focuses on the physical integration and performance of the vehicle’s systems. From high-voltage battery management and drivetrain optimization to embedded systems and power electronics, our engineers ensure that every component works safely and efficiently.
         </p>
-      </article>
+        <ul class="list-disc list-inside text-gray-600 dark:text-gray-300">
+          <li>Battery and thermal management</li>
+          <li>Powertrain integration and safety systems</li>
+          <li>Vehicle control hardware and sensors</li>
+        </ul>
+        <a href="team-hardware.html" class="inline-block mt-4 bg-[#E87700] hover:bg-[#ff9330] text-white font-semibold py-2 px-5 rounded-full shadow transition">Learn More</a>
+      </div>
+    </section>
 
-      <article class="bg-white dark:bg-[#1B3358] rounded-2xl shadow-md hover:shadow-xl border border-gray-100 dark:border-gray-600 p-8 text-center transition-transform hover:-translate-y-2" data-aos="fade-up" data-aos-delay="100">
-        <h3 class="text-xl md:text-2xl font-bold text-[#0D2145] dark:text-white mb-2">Primary Investigator</h3>
-        <p class="text-gray-700 dark:text-gray-200 mb-1"><span class="font-semibold">Name:</span> [Insert Name]</p>
-        <p class="text-gray-700 dark:text-gray-200 mb-1"><span class="font-semibold">Phone:</span> (XXX) XXX-XXXX</p>
-        <p class="text-gray-700 dark:text-gray-200 mb-1"><span class="font-semibold">Fax:</span> (XXX) XXX-XXXX</p>
-        <p class="text-gray-700 dark:text-gray-200"><span class="font-semibold">Email:</span> 
-          <a href="mailto:example@auburn.edu" class="text-[#E87700] hover:underline">example@auburn.edu</a>
+    <!-- CFD -->
+    <section class="flex flex-col md:flex-row-reverse items-center gap-12 fade-in" data-aos="fade-up" data-aos-delay="100">
+      <img src="cfd-team.jpg" alt="CFD Team" class="w-full md:w-1/2 rounded-2xl shadow-lg" />
+      <div class="md:w-1/2 space-y-4">
+        <h3 class="text-3xl font-bold text-[#E87700]">CFD Team</h3>
+        <p class="text-gray-700 dark:text-gray-200 leading-relaxed">
+          The Computational Fluid Dynamics (CFD) Team leverages advanced simulation tools to study airflow, cooling systems, and aerodynamic performance. By optimizing drag and thermal behavior, they enhance vehicle range, stability, and energy efficiency.
         </p>
-      </article>
+        <ul class="list-disc list-inside text-gray-600 dark:text-gray-300">
+          <li>Vehicle aerodynamics simulation</li>
+          <li>Cooling and thermal modeling</li>
+          <li>CFD-based design optimization</li>
+        </ul>
+        <a href="team-cfd.html" class="inline-block mt-4 bg-[#E87700] hover:bg-[#ff9330] text-white font-semibold py-2 px-5 rounded-full shadow transition">Learn More</a>
+      </div>
+    </section>
 
-      <article class="bg-white dark:bg-[#1B3358] rounded-2xl shadow-md hover:shadow-xl border border-gray-100 dark:border-gray-600 p-8 text-center transition-transform hover:-translate-y-2" data-aos="fade-up" data-aos-delay="200">
-        <h3 class="text-xl md:text-2xl font-bold text-[#0D2145] dark:text-white mb-2">Department of Energy</h3>
-        <p class="text-gray-700 dark:text-gray-200 mb-1"><span class="font-semibold">Program Manager:</span> [Insert Name]</p>
-        <p class="text-gray-700 dark:text-gray-200 mb-1"><span class="font-semibold">Phone:</span> (XXX) XXX-XXXX</p>
-        <p class="text-gray-700 dark:text-gray-200"><span class="font-semibold">Website:</span> 
-          <a href="#" class="text-[#E87700] hover:underline">Department of Energy</a>
+    <!-- AI -->
+    <section class="flex flex-col md:flex-row items-center gap-12 fade-in" data-aos="fade-up" data-aos-delay="200">
+      <img src="ai-team.jpg" alt="AI Team" class="w-full md:w-1/2 rounded-2xl shadow-lg" />
+      <div class="md:w-1/2 space-y-4">
+        <h3 class="text-3xl font-bold text-[#E87700]">AI & Controls Team</h3>
+        <p class="text-gray-700 dark:text-gray-200 leading-relaxed">
+          The AI and Controls Team focuses on intelligent vehicle systems — from data-driven decision-making to autonomous driving algorithms. Their work bridges machine learning, control theory, and real-time vehicle feedback to create smarter, more adaptive EV systems.
         </p>
-      </article>
-    </div>
+        <ul class="list-disc list-inside text-gray-600 dark:text-gray-300">
+          <li>Sensor fusion and data analytics</li>
+          <li>Autonomous navigation and perception</li>
+          <li>Machine learning for system optimization</li>
+        </ul>
+        <a href="team-ai.html" class="inline-block mt-4 bg-[#E87700] hover:bg-[#ff9330] text-white font-semibold py-2 px-5 rounded-full shadow transition">Learn More</a>
+      </div>
+    </section>
 
-    <!-- Contact Form -->
-    <article class="bg-white dark:bg-[#1B3358] rounded-2xl shadow-md hover:shadow-xl border border-gray-100 dark:border-gray-600 p-8 fade-in transition-transform hover:-translate-y-2" data-aos="fade-up">
-      <h3 class="text-2xl font-semibold text-[#0D2145] dark:text-white mb-6 text-center">Send Us a Message</h3>
-      <form action="#" method="POST" class="space-y-6 max-w-3xl mx-auto">
-        <div>
-          <label class="block text-gray-700 dark:text-gray-200 mb-2 font-medium" for="name">Name</label>
-          <input type="text" id="name" name="name" placeholder="Your Name" class="w-full border border-gray-300 dark:border-gray-600 rounded-lg p-3 focus:ring-2 focus:ring-[#E87700] focus:outline-none transition"/>
-        </div>
-        <div>
-          <label class="block text-gray-700 dark:text-gray-200 mb-2 font-medium" for="email">Email</label>
-          <input type="email" id="email" name="email" placeholder="you@example.com" class="w-full border border-gray-300 dark:border-gray-600 rounded-lg p-3 focus:ring-2 focus:ring-[#E87700] focus:outline-none transition"/>
-        </div>
-        <div>
-          <label class="block text-gray-700 dark:text-gray-200 mb-2 font-medium" for="message">Message</label>
-          <textarea id="message" name="message" rows="6" placeholder="Your message..." class="w-full border border-gray-300 dark:border-gray-600 rounded-lg p-3 focus:ring-2 focus:ring-[#E87700] focus:outline-none transition"></textarea>
-        </div>
-        <div class="text-center">
-          <button type="submit" class="bg-[#E87700] text-white font-semibold px-8 py-3 rounded-lg hover:bg-[#d46b00] transition">Send Message</button>
-        </div>
-      </form>
-    </article>
   </main>
 
   <!-- FOOTER -->
@@ -173,10 +165,8 @@
   <!-- JS -->
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
-    // AOS
     AOS.init({ duration: 800, once: true });
 
-    // Fade-in on scroll
     const elements = document.querySelectorAll(".fade-in");
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
@@ -185,30 +175,17 @@
     });
     elements.forEach((el) => observer.observe(el));
 
-    // Mobile menu
     document.getElementById("menu-btn").onclick = () =>
       document.getElementById("mobile-menu").classList.toggle("hidden");
 
-    // DARK MODE TOGGLE + PERSISTENCE
     const themeToggle = document.getElementById("theme-toggle");
     const htmlEl = document.documentElement;
-
-    // Check for saved theme preference or use system preference
     const savedTheme = localStorage.getItem("theme");
     const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-
-    if (savedTheme === "dark" || (!savedTheme && systemPrefersDark)) {
-      htmlEl.classList.add("dark");
-    } else {
-      htmlEl.classList.remove("dark");
-    }
-
+    if (savedTheme === "dark" || (!savedTheme && systemPrefersDark)) htmlEl.classList.add("dark");
     themeToggle.addEventListener("click", () => {
       htmlEl.classList.toggle("dark");
-      localStorage.setItem(
-        "theme",
-        htmlEl.classList.contains("dark") ? "dark" : "light"
-      );
+      localStorage.setItem("theme", htmlEl.classList.contains("dark") ? "dark" : "light");
     });
   </script>
 </body>
