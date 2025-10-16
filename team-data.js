@@ -96,7 +96,7 @@ const teamData = [
     name: "Ben Tzou",
     role: "Computational Modeling",
     university: "Auburn University, Engineering",
-    photo: "https://eng.auburn.edu/images/image-not-available.jpg",
+    photo: "headshots/tzou.jpg",
     email: "bzt0035@auburn.edu",
     phone: "",
     website: "https://www.linkedin.com/in/benjamin-tzou/",
