@@ -58,17 +58,6 @@ const teamData = [
     subRole: ""
   },
   {
-    name: "Jack Shanahan",
-    role: "Graduate Researcher",
-    university: "Auburn University, Engineering",
-    photo: "https://eng.auburn.edu/images/image-not-available.jpg",
-    email: "jts0143@auburn.edu",
-    phone: "",
-    website: "",
-    roleCategory: "Grad Students",
-    subRole: ""
-  },
-  {
     name: "Tommy Kratt",
     role: "Graduate Researcher",
     university: "Auburn University, Engineering",
@@ -85,6 +74,17 @@ const teamData = [
     university: "Auburn University, Engineering",
     photo: "http://bikramsinghbhattarai.com.np/wp-content/uploads/2021/04/FaceApp_1614909290109-01-474x620.jpeg",
     email: "bikram.bhattarai@auburn.edu",
+    phone: "",
+    website: "",
+    roleCategory: "Grad Students",
+    subRole: ""
+  },
+  {
+    name: "Darryl Cherian Jacob",
+    role: "Graduate Researcher",
+    university: "Auburn University, Engineering",
+    photo: "https://eng.auburn.edu/images/image-not-available.jpg",
+    email: "dzj0055@auburn.edu",
     phone: "",
     website: "",
     roleCategory: "Grad Students",
@@ -129,7 +129,7 @@ const teamData = [
     name: "Alexandra Warhurst",
     role: "Hardware",
     university: "Auburn University, Engineering",
-    photo: "https://eng.auburn.edu/images/image-not-available.jpg",
+    photo: "Headshots/warhurst.jpeg",
     email: "anw0081@auburn.edu",
     phone: "",
     website: "https://www.linkedin.com/in/alexandra-warhurst-094980232/",
@@ -151,7 +151,7 @@ const teamData = [
     name: "Alyssa Ezell",
     role: "Hardware",
     university: "Auburn University, Engineering",
-    photo: "https://eng.auburn.edu/images/image-not-available.jpg",
+    photo: "Headshots/ezell.jpg",
     email: "ale0060@auburn.edu",
     phone: "",
     website: "https://www.linkedin.com/in/alyssa-ezell-12b68b27a/",
