@@ -58,21 +58,10 @@ const teamData = [
     subRole: ""
   },
   {
-    name: "Tommy Kratt",
-    role: "Graduate Researcher",
-    university: "Auburn University, Engineering",
-    photo: "https://eng.auburn.edu/images/image-not-available.jpg",
-    email: "trk0028@auburn.edu",
-    phone: "",
-    website: "",
-    roleCategory: "Grad Students",
-    subRole: ""
-  },
-  {
     name: "Bikram Bhattarai",
     role: "Graduate Researcher",
     university: "Auburn University, Engineering",
-    photo: "http://bikramsinghbhattarai.com.np/wp-content/uploads/2021/04/FaceApp_1614909290109-01-474x620.jpeg",
+    photo: "https://scholar.googleusercontent.com/citations?view_op=medium_photo&user=H5-6FbYAAAAJ&citpid=14",
     email: "bikram.bhattarai@auburn.edu",
     phone: "",
     website: "",
